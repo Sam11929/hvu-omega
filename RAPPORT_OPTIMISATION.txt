@@ -1,0 +1,36 @@
+HVU OMEGA R005 — OPTIMISATION INTÉGRALE iPHONE — v0.9.0
+
+Source contrôlée : HVU_OMEGA_R005_IPHONE_PWA_LIGHT_GITHUB_CLOUDFLARE_READY.zip
+SHA-256 source : 08370c994bc15d49e86ac298488083aef92d721f9084335f555725c21163c8d1
+
+MESURES (1 Mio = 1 048 576 octets)
+Réseau avant : 15 904 035 octets = 15,17 Mio.
+Réseau après : 4 376 751 octets = 4,17 Mio, soit environ 72,5 % de réduction.
+Les images communes aux archives et au site ne sont plus stockées deux fois.
+
+CONSERVATION
+- Les cinq modules sont présents.
+- Les quatre autres modules HTML sont identiques, octet par octet.
+- Les 42 images externalisées sont identiques, octet par octet ; leurs 52 références restent présentes.
+- La structure HTML du Réseau est identique. Les blocs de données sont conservés ; seule la représentation de stockage des trois archives change.
+- Les trois archives historiques sont restituées avec les tailles et SHA-256 d’origine.
+- Le chargement des archives se fait à la demande ; le préchargement hors ligne les inclut.
+
+CACHE HORS LIGNE
+- Numéro de version et cache propres à cette édition et à l’adresse du site.
+- Script PWA inclus dans les ressources hors ligne.
+- Préchargement de 61 ressources vérifiées par taille et SHA-256, avec trois téléchargements simultanés maximum.
+- Une erreur ou un fichier altéré empêche la confirmation de préchargement complet.
+- Les caches appartenant à d’autres applications sont conservés.
+- Le lancement index.html?source=pwa est couvert hors ligne.
+
+TESTS RÉALISÉS
+- Intégrité ZIP, chemins locaux, icônes et manifeste.
+- Vérification syntaxique de 25 scripts intégrés et des scripts PWA.
+- Comparaison des images, données et modules.
+- Reconstruction des trois archives avec le nouveau JavaScript et comparaison intégrale à leurs originaux.
+- Simulation du navigateur et du cache avec les API Web de Node : déploiement à la racine et dans un sous-dossier, navigation sur les six pages principales hors ligne, restitution des archives hors ligne, fichier manquant, fichier altéré, conservation d’un cache étranger.
+- Recherche de clés OpenAI explicites : aucune détectée dans les fichiers texte contrôlés et les archives historiques décompressées.
+
+LIMITES
+Aucun déploiement réel ni test sur un iPhone physique n’a été effectué ici. L’affichage Safari et l’installation doivent être confirmés après publication HTTPS. Le navigateur peut gérer ou supprimer son stockage local ; le préchargement n’est pas une garantie de conservation permanente. Les fonctions IA distantes restent dépendantes du Bridge et du réseau.

@@ -1,0 +1,72 @@
+{
+  "id": "./",
+  "name": "HVU Omega R005",
+  "short_name": "HVU Omega",
+  "description": "HVU Omega R005 — Réseau Vivant, Protocoles, AutoLab, Cadran 11-33-33 et L’Enfant de l’Univers.",
+  "lang": "fr-FR",
+  "start_url": "./index.html?source=pwa",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "any",
+  "background_color": "#02060d",
+  "theme_color": "#02060d",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Réseau Vivant",
+      "short_name": "Réseau",
+      "url": "./reseau_r005.html",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Cadran Magistral",
+      "short_name": "Cadran",
+      "url": "./cadran.html",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "AutoLab",
+      "short_name": "AutoLab",
+      "url": "./autolab.html",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}

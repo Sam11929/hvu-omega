@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#02060d">
+<title>HVU · Cadran Magistral 11‑33‑33 · R005 ULTIMA 2026</title>
+<meta name="description" content="Refonte magistrale du HVU All-in-One v7.1 : moteur actif 11-33-33, Legacy 11-33-30, T30 séparé, Matrice 1461, Réseau Vivant et Bridge R005.1.">
+<meta name="hvu-artifact" content="HVU_CADRAN_MAGISTRAL_11_33_33_R005_ULTIMA">
+<meta name="hvu-status" content="CANDIDATE_UNRATIFIED">
+<style>
+:root{
+ --bg:#02060d;--bg2:#07111e;--ink:#eef8ff;--muted:#8ca5b9;--line:rgba(145,201,232,.15);
+ --blue:#3ebcff;--green:#4ff0a2;--red:#ff615c;--gold:#ecc96c;--cyan:#78ecff;--violet:#b69cff;
+ --panel:rgba(7,16,29,.78);--panel2:rgba(10,23,40,.92);--shadow:0 28px 90px rgba(0,0,0,.42);
+ --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;--sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--bg)}body{margin:0;color:var(--ink);font-family:var(--sans);min-height:100vh;background:
+radial-gradient(900px 520px at 8% -8%,rgba(62,188,255,.12),transparent 62%),
+radial-gradient(820px 520px at 92% 0%,rgba(79,240,162,.09),transparent 62%),
+radial-gradient(900px 600px at 50% 110%,rgba(255,97,92,.08),transparent 62%),var(--bg)}
+body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(#000,transparent 82%)}
+button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
+.progress{position:fixed;top:0;left:0;width:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--green),var(--red),var(--gold));z-index:150}
+header{position:sticky;top:0;z-index:100;background:rgba(2,6,13,.75);backdrop-filter:blur(22px);border-bottom:1px solid var(--line)}.top{max-width:1560px;margin:auto;padding:10px 16px;display:flex;gap:10px;align-items:center}.brand{display:flex;align-items:center;gap:10px;font-weight:950;letter-spacing:.08em;white-space:nowrap}.sigil{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(236,201,108,.55);color:var(--gold);box-shadow:0 0 24px rgba(236,201,108,.14)}nav{display:flex;gap:6px;overflow:auto;scrollbar-width:none;flex:1}nav::-webkit-scrollbar{display:none}nav button,.ghost{border:1px solid var(--line);background:rgba(255,255,255,.032);color:var(--muted);padding:9px 12px;border-radius:999px;white-space:nowrap}nav button:hover,nav button.active,.ghost:hover{color:#fff;border-color:rgba(120,236,255,.35);background:rgba(120,236,255,.07)}.wrap{max-width:1560px;margin:auto;padding:0 20px}
+.hero{min-height:88vh;display:grid;grid-template-columns:.88fr 1.12fr;gap:42px;align-items:center;padding-top:52px;padding-bottom:56px}.eyebrow{font:850 11px/1.2 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}h1{font-size:clamp(52px,6.8vw,102px);line-height:.88;letter-spacing:-.06em;margin:16px 0 20px}h1 span{font-weight:250;color:transparent;-webkit-text-stroke:1px rgba(238,248,255,.46)}.lead{font-size:clamp(18px,1.8vw,25px);line-height:1.5;color:#c6d5e1;max-width:760px}.cta{display:flex;gap:9px;flex-wrap:wrap;margin-top:24px}.primary{border:1px solid rgba(236,201,108,.55);background:linear-gradient(135deg,rgba(236,201,108,.18),rgba(236,201,108,.05));color:#fff;padding:13px 17px;border-radius:14px;font-weight:900}
+.dialShell{position:relative;aspect-ratio:1;max-width:760px;margin:auto;border-radius:50%;filter:drop-shadow(0 30px 70px rgba(0,0,0,.45))}#masterDial{width:100%;height:100%;display:block}.dialGlass{position:absolute;inset:4%;border-radius:50%;pointer-events:none;background:radial-gradient(circle at 40% 30%,rgba(255,255,255,.05),transparent 36%);box-shadow:inset 0 0 90px rgba(62,188,255,.05)}.centerReadout{position:absolute;inset:38%;display:grid;place-items:center;text-align:center;border-radius:50%;background:radial-gradient(circle at 35% 25%,#193247,#050b13 66%);border:1px solid rgba(236,201,108,.5);box-shadow:0 0 55px rgba(236,201,108,.13),inset 0 0 35px rgba(120,236,255,.05)}.centerReadout .time{font:950 clamp(20px,3vw,38px)/1 var(--mono);letter-spacing:-.06em}.centerReadout small{font:850 9px/1.4 var(--mono);color:var(--muted);letter-spacing:.08em}.miniReadouts{position:absolute;left:50%;bottom:4%;transform:translateX(-50%);width:86%;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.chip{border:1px solid var(--line);background:rgba(2,8,16,.82);backdrop-filter:blur(10px);border-radius:999px;padding:7px 10px;font:800 10px/1 var(--mono);color:#bfd2df}
+.modebar{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}.modebar button.active{color:#fff;border-color:rgba(236,201,108,.5);background:rgba(236,201,108,.08)}
+.section{padding:72px 0}.sectionhead{display:flex;justify-content:space-between;gap:22px;align-items:end;margin-bottom:26px}.sectionhead h2{font-size:clamp(34px,4.5vw,67px);letter-spacing:-.045em;margin:5px 0}.sectionhead p{max-width:700px;color:var(--muted);line-height:1.65}
+.grid{display:grid;gap:14px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}.card{position:relative;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border-radius:24px;padding:21px;box-shadow:var(--shadow);overflow:hidden}.card:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(380px 160px at 5% 0%,rgba(120,236,255,.045),transparent 70%)}.card h3{margin:0 0 8px}.card p{margin:0;color:var(--muted);line-height:1.58}.kpi{font-size:38px;font-weight:950;letter-spacing:-.04em}.kpi small{font-size:11px;color:var(--muted);font:800 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.badge{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:rgba(255,255,255,.035);padding:7px 10px;border-radius:999px;font:850 10px/1 var(--mono)}.badge:before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 12px currentColor}.ok{color:var(--green)}.warn{color:var(--gold)}.bad{color:var(--red)}.info{color:var(--blue)}.violet{color:var(--violet)}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px}.engine{min-height:300px}.formula{font:950 clamp(32px,4vw,58px)/1 var(--mono);letter-spacing:-.05em;margin:12px 0 16px}.mathrow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.mathbox{padding:12px;border:1px solid var(--line);border-radius:14px;background:#06101b}.mathbox b{display:block;font:950 22px/1.1 var(--mono)}.mathbox small{color:var(--muted)}.delta{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}.delta .card{padding:15px}
+.legend{display:grid;gap:8px;margin-top:14px}.rule{padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:rgba(0,0,0,.15);color:#c9d8e5;display:flex;gap:12px;align-items:flex-start}.rule b{color:#fff}
+.matrix{display:grid;grid-template-columns:.78fr 1.22fr;gap:14px}.matrixGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.yearCol{border:1px solid var(--line);border-radius:16px;padding:10px;background:#06101b}.yearCol h4{margin:0 0 8px}.dayStrip{height:260px;display:flex;flex-direction:column-reverse;gap:1px}.dayDot{flex:1;min-height:1px;background:rgba(255,255,255,.055);border-radius:1px}.dayDot.harmony{background:var(--gold);box-shadow:0 0 8px rgba(236,201,108,.5)}.dayDot.today{background:var(--cyan);box-shadow:0 0 8px rgba(120,236,255,.6)}.anchorRow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}input,select,textarea{background:#040b14;border:1px solid var(--line);color:#fff;border-radius:13px;padding:11px 13px;outline:none}
+.triad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.triadCard{min-height:190px}.triadCard.blue{border-color:rgba(62,188,255,.28)}.triadCard.green{border-color:rgba(79,240,162,.28)}.triadCard.red{border-color:rgba(255,97,92,.28)}.triadCard .bigv{font-size:27px;font-weight:950;margin:8px 0}
+.agentbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.agentbar input{flex:1;min-width:230px}.agentgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}.agent{padding:13px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.022)}.agent .n{font:900 9px/1 var(--mono);color:var(--muted)}.agent h4{margin:6px 0 4px}.agent p{font-size:12px;line-height:1.4;color:var(--muted)}.fam{font:800 9px/1 var(--mono);color:var(--blue);margin-top:8px}
+.bridge{display:grid;grid-template-columns:.8fr 1.2fr;gap:14px}textarea{width:100%;min-height:110px;resize:vertical}.statusline{display:flex;gap:10px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:14px;background:#06101b;margin-top:8px}.led{width:10px;height:10px;border-radius:50%;background:#536675}.led.ok{background:var(--green);box-shadow:0 0 14px rgba(79,240,162,.5)}.led.bad{background:var(--red)}.missionOut{white-space:pre-wrap;min-height:220px;max-height:480px;overflow:auto;background:#02070e;border:1px solid var(--line);border-radius:16px;padding:14px;font:13px/1.55 var(--mono);color:#c5d7e3}
+.legacySource{border:1px solid var(--line);border-radius:20px;background:#02060b;overflow:hidden}.sourcebar{display:flex;gap:8px;padding:12px;border-bottom:1px solid var(--line)}.sourcebar input{flex:1}pre{margin:0;padding:18px;max-height:620px;overflow:auto;white-space:pre-wrap;color:#9fb3c2;font:12px/1.55 var(--mono)}mark{background:rgba(236,201,108,.25);color:#fff;border-radius:3px}
+.auditgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.audititem{padding:12px;border:1px solid var(--line);border-radius:14px}.audititem.pass{border-color:rgba(79,240,162,.27)}.audititem.fail{border-color:rgba(255,97,92,.38)}footer{padding:44px 0 80px;border-top:1px solid var(--line);color:var(--muted)}.toast{position:fixed;right:18px;bottom:18px;z-index:200;background:#091522;border:1px solid var(--line);border-radius:14px;padding:12px 14px;box-shadow:var(--shadow);opacity:0;transform:translateY(8px);transition:.2s;pointer-events:none}.toast.show{opacity:1;transform:none}
+@media(max-width:1200px){.hero,.matrix,.bridge{grid-template-columns:1fr}.dialShell{width:min(85vw,760px)}.agentgrid{grid-template-columns:repeat(3,1fr)}.g4,.delta{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:780px){.wrap{padding:0 14px}.hero{padding-top:40px}.sectionhead{flex-direction:column;align-items:start}.compare,.g2,.g3,.g4,.triad,.auditgrid,.mathrow{grid-template-columns:1fr}.agentgrid{grid-template-columns:1fr 1fr}.matrixGrid{grid-template-columns:1fr 1fr}.delta{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.agentgrid,.matrixGrid,.delta{grid-template-columns:1fr}.brand span{display:none}.miniReadouts{display:none}}
+@media print{header,.cta,.modebar,.bridge,.sourcebar,.progress{display:none!important}body{background:white;color:#111}.card,.legacySource{box-shadow:none;background:white;border-color:#bbb}p,.card p,.rule{color:#444!important}}
+</style>
+
+<style id="hvuIOSShellStyle">
+html{background:#02060d}
+body{
+  padding-left:env(safe-area-inset-left);
+  padding-right:env(safe-area-inset-right);
+  padding-bottom:env(safe-area-inset-bottom);
+}
+#hvuIOSHome{
+ position:fixed;z-index:2147483647;
+ left:max(10px,env(safe-area-inset-left));
+ bottom:max(10px,env(safe-area-inset-bottom));
+ border:1px solid rgba(236,201,108,.45);
+ background:rgba(3,8,16,.90);backdrop-filter:blur(14px);
+ color:#f3dda0;padding:10px 13px;border-radius:999px;
+ font:800 11px/1 system-ui,-apple-system,"SF Pro Text","Segoe UI",sans-serif;
+ box-shadow:0 10px 32px rgba(0,0,0,.38);text-decoration:none;
+ -webkit-tap-highlight-color:transparent;
+}
+button,a{touch-action:manipulation}
+</style>
+
+
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="HVU Omega">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
+<script src="./pwa.js"></script>
+
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header><div class="top"><a class="brand" href="#home"><div class="sigil">Ω</div><span>HVU · CADRAN MAGISTRAL · 11‑33‑33</span></a><nav>
+<button data-go="home" class="active">Cadran</button><button data-go="comparateur">11‑33‑30 ↔ 33</button><button data-go="matrice">Matrice 1461</button><button data-go="triade">Triade</button><button data-go="reseau">Réseau 30</button><button data-go="bridge">Bridge IA</button><button data-go="legacy">Legacy</button><button data-go="audit">Audit</button>
+</nav></div></header>
+
+<main>
+<section id="home" class="wrap hero">
+<div>
+<div class="eyebrow">HVU 2026 · All‑in‑One v7.1 → ULTIMA R005</div>
+<h1>Le cadran<br><span>devient instrument.</span></h1>
+<p class="lead">Le Tout‑en‑Un historique est conservé, mais son moteur actif est désormais <b>11 × 33 × 33</b>. Le vieux <b>11 × 33 × 30</b> reste visible en comparaison, et le <b>T30</b> est explicitement séparé comme géométrie de 30 secteurs.</p>
+<div class="modebar"><button class="ghost active" data-mode="active">MAGISTRAL 11‑33‑33</button><button class="ghost" data-mode="compare">COMPARAISON</button><button class="ghost" data-mode="t30">T30</button><button class="ghost" data-mode="legacy">LEGACY 11‑33‑30</button></div>
+<div class="cta"><button class="primary" data-go="comparateur">Voir la bascule mathématique</button><button class="ghost" data-go="matrice">Matrice 1461</button><button class="ghost" data-go="legacy">Source v7.1</button></div>
+</div>
+
+<div class="dialShell">
+<svg id="masterDial" viewBox="0 0 1000 1000" aria-label="Cadran Magistral HVU">
+<defs>
+<filter id="glowC"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<filter id="glowG"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<circle cx="500" cy="500" r="478" fill="#030811" stroke="rgba(145,201,232,.14)"/>
+<g id="hourRing"></g><g id="unitRing"></g><g id="stepRing"></g><g id="t30Ring"></g>
+<g id="labelsSvg"></g>
+<circle cx="500" cy="500" r="142" fill="none" stroke="rgba(236,201,108,.22)"/>
+</svg>
+<div class="dialGlass"></div>
+<div class="centerReadout"><div><small id="centerLabel">TEMPS HVU · 11‑33‑33</small><div class="time" id="centerTime">--:--:--</div><small id="centerMeta">11979 pas / jour</small></div></div>
+<div class="miniReadouts"><span class="chip" id="civilChip">Civil --:--:--</span><span class="chip" id="t30Chip">T30 --</span><span class="chip" id="matrixChip">M1461 --</span></div>
+</div>
+</section>
+
+<section id="comparateur" class="wrap section">
+<div class="sectionhead"><div><div class="eyebrow">COMPARATEUR TEMPOREL</div><h2>11‑33‑30 → 11‑33‑33.</h2></div><p>Le fichier v7.1 utilise `NUM:10890` et divise ensuite par `30`, ce qui matérialise un moteur 11 × 33 × 30. La branche 2026 conserve 11 × 33 = 363, mais porte le troisième niveau à 33.</p></div>
+<div class="compare">
+<article class="card engine"><span class="badge warn">LEGACY V7.1</span><div class="formula">11 × 33 × 30</div><p>11 heures HVU · 33 unités par heure · 30 pas par unité.</p><div class="mathrow"><div class="mathbox"><b>363</b><small>unités/jour</small></div><div class="mathbox"><b>10 890</b><small>pas/jour</small></div><div class="mathbox"><b id="legacyStepDur">—</b><small>s civils/pas</small></div></div><div class="statusline"><span class="led"></span><div><b>Statut : Legacy</b><br><small>Conservé pour provenance et comparaison ; non actif.</small></div></div></article>
+<article class="card engine"><span class="badge ok">ACTIF 2026</span><div class="formula">11 × 33 × 33</div><p>11 heures HVU · 33 unités par heure · 33 pas par unité.</p><div class="mathrow"><div class="mathbox"><b>363</b><small>unités/jour</small></div><div class="mathbox"><b>11 979</b><small>pas/jour</small></div><div class="mathbox"><b id="activeStepDur">—</b><small>s civils/pas</small></div></div><div class="statusline"><span class="led ok"></span><div><b>Statut : candidat expérimental interne</b><br><small>Adopté comme moteur HVU courant, pas comme norme physique externe.</small></div></div></article>
+</div>
+<div class="delta">
+<div class="card"><div class="kpi">+1 089 <small>pas / jour</small></div><p>Différence exacte entre les deux moteurs.</p></div>
+<div class="card"><div class="kpi">33² <small>delta structurel</small></div><p>1 089 = 33 × 33.</p></div>
+<div class="card"><div class="kpi">+10 % <small>résolution</small></div><p>11 979 = 1,1 × 10 890.</p></div>
+<div class="card"><div class="kpi">363 <small>charpente commune</small></div><p>11 × 33 reste inchangé.</p></div>
+</div>
+<div class="card" style="margin-top:14px"><div class="eyebrow">T30 · séparation obligatoire</div><div class="legend"><div class="rule"><b>T30</b><div>30 secteurs civils de 2 880 s = 48 minutes chacun. C’est une géométrie/navigation de cadran dans cette édition.</div></div><div class="rule"><b>11‑33‑33</b><div>Moteur temporel HVU actif : 11 979 pas quotidiens.</div></div><div class="rule"><b>Ne pas confondre</b><div>Le nombre 30 du T30 ne remplace pas le troisième facteur 33 du moteur temporel actif.</div></div></div></div>
+</section>
+
+<section id="matrice" class="wrap section">
+<div class="sectionhead"><div><div class="eyebrow">MATRICE 1461</div><h2>4 années · 1452 structurels + 9 Harmonies.</h2></div><p>La matrice reste un modèle interne HVU. L’ancrage civil de visualisation est configurable ci-dessous afin de ne pas transformer une convention d’affichage en fait cosmique.</p></div>
+<div class="matrix">
+<article class="card">
+<div class="eyebrow">Position courante</div><div class="kpi" id="matrixPosition">J—</div><p id="matrixDetail">—</p>
+<div class="anchorRow"><label for="anchorDate" class="eyebrow" style="color:var(--muted)">ANCRAGE D’AFFICHAGE</label><input id="anchorDate" type="date" value="2026-01-01"><button class="ghost" id="saveAnchor">Enregistrer</button></div>
+<div class="legend"><div class="rule"><b>Harmonies</b><div>J133 · J266 · J531 · J664 · J929 · J1062 · J1195 · J1328 · J1461</div></div><div class="rule"><b>Gouvernance</b><div>L’ancrage sert à visualiser le cycle ; il est modifiable et versionnable.</div></div></div>
+</article>
+<article class="card"><div class="matrixGrid" id="matrixGrid"></div></article>
+</div>
+</section>
+
+<section id="triade" class="wrap section">
+<div class="sectionhead"><div><div class="eyebrow">TROIS SOUS‑CADRANS RÉINTERPRÉTÉS</div><h2>Structurer · Relier · Transformer.</h2></div><p>Les trois sous-cadrans du v7.1 répétaient tous les mêmes heures/minutes/secondes civiles. Dans cette édition, ils deviennent trois lectures fonctionnelles distinctes du même instant HVU.</p></div>
+<div class="triad">
+<article class="card triadCard blue"><span class="badge info">🔵 STRUCTURER</span><div class="bigv" id="triBlue">Heure HVU —</div><p>Couche macro : position parmi les 11 heures. Correspondance symbolique HVU : bleu / cryogénique / intelligence, sans revendication physique automatique.</p></article>
+<article class="card triadCard green"><span class="badge ok">🟢 RELIER</span><div class="bigv" id="triGreen">Unité —</div><p>Couche relationnelle : position parmi les 33 unités de l’heure. Correspondance symbolique : vert / électromagnétique / vie.</p></article>
+<article class="card triadCard red"><span class="badge bad">🔴 TRANSFORMER</span><div class="bigv" id="triRed">Pas —</div><p>Couche micro : position parmi les 33 pas de l’unité. Correspondance symbolique : rouge / thermique / émotions.</p></article>
+</div>
+</section>
+
+<section id="reseau" class="wrap section">
+<div class="sectionhead"><div><div class="eyebrow">RÉSEAU VIVANT R005</div><h2>30 nœuds autour du temps.</h2></div><p>Le cadran peut devenir une surface de mission : COBRA/TOKI pour les cycles, ACTARUS/AYATO pour les tests, BRUCE pour la provenance, ADAM pour l’orchestration. Ce sont des rôles logiciels, pas des validations indépendantes.</p></div>
+<div class="agentbar"><input id="agentSearch" placeholder="Rechercher un nœud, rôle, famille…"><button class="ghost" data-fam="all">30 nœuds</button><button class="ghost" data-fam="F1">Gouvernance</button><button class="ghost" data-fam="F2">Test</button><button class="ghost" data-fam="F3">Création</button><button class="ghost" data-fam="F4">Transmission</button><button class="ghost" data-fam="F5">Opération</button></div><div class="agentgrid" id="agentGrid"></div>
+</section>
+
+<section id="bridge" class="wrap section">
+<div class="sectionhead"><div><div class="eyebrow">MISSION CONTROL</div><h2>Bridge R005.1 compatible.</h2></div><p>Le cadran fonctionne entièrement hors ligne. Si le Bridge local est lancé, tu peux envoyer une mission au moteur agentique sans stocker la clé API dans ce fichier.</p></div>
+<div class="bridge">
+<article class="card"><div class="eyebrow">Connexion locale</div><div class="statusline"><span class="led" id="bridgeLed"></span><div id="bridgeStatus"><b>Bridge non testé</b><br><small>Le cadran reste autonome.</small></div></div><div class="cta"><button class="primary" id="bridgeTest">Tester Bridge</button><button class="ghost" id="loadClockMission">Mission cadran</button></div><div class="legend"><div class="rule"><b>Endpoint</b><div><code>127.0.0.1:8765</code></div></div><div class="rule"><b>Principe</b><div>Aucune bascule silencieuse : une erreur API reste visible.</div></div></div></article>
+<article class="card"><textarea id="missionText">Auditer le moteur temporel HVU 11-33-33 face au Legacy 11-33-30. Distinguer calculs exacts, conventions internes, hypothèses, avantages structurels, objections et tests nécessaires. Ne pas confondre T30 et moteur temporel.</textarea><div class="cta"><button class="primary" id="sendMission">Envoyer au Bridge</button><button class="ghost" id="routeMission">Router localement</button></div><div class="missionOut" id="missionOut">Aucune mission envoyée.</div></article>
+</div>
+</section>
+
+<section id="legacy" class="wrap section">
+<div class="sectionhead"><div><div class="eyebrow">PROVENANCE</div><h2>HVU_AllInOne_v7_1.html intact.</h2></div><p>La source originale est embarquée intégralement. On peut donc comparer le moteur historique, ses trois sous-cadrans et sa logique C363/T30 avec la refonte 2026.</p></div>
+<div class="legacySource"><div class="sourcebar"><input id="sourceSearch" placeholder="Rechercher : 10890, T30, subG, 363…"><button class="ghost" id="copySource">Copier source</button></div><pre id="sourceView">&lt;!doctype html&gt;
+&lt;html lang=&quot;fr&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;HVU v7.1 — Tout‑en‑Un (Cadran + 3 sous‑cadrans)&lt;/title&gt;
+&lt;style&gt;
+:root{
+  --bg:#05070b; --fg:#e6ebf2; --muted:#8fa3bf; --border:#0e1626;
+  --g:#17a368; --r:#e24a44; --b:#2b62ff; --gold:#d4af37; --cyan:#7af8ff;
+  --tick:#19243a;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
+header{padding:10px 14px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:center;justify-content:space-between}
+.badge{font:600 12px ui-monospace;background:#0c1324;color:#a0b4cf;border:1px solid var(--border);padding:4px 8px;border-radius:999px}
+.btn{all:unset;cursor:pointer;border:1px solid var(--border);padding:6px 10px;border-radius:10px}
+main{padding:14px;display:grid;place-items:center}
+.wrap{position:relative;width:min(96vw,1000px);aspect-ratio:1/1}
+svg{width:100%;height:100%;display:block}
+.center{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;text-align:center}
+.big{font:700 44px ui-monospace}
+.subdial-label{font:700 12px ui-monospace;letter-spacing:.4px;fill:#a0b4cf}
+.mono{font:600 12px ui-monospace;color:#a0b4cf}
+.readouts{position:absolute;bottom:2.5%;left:50%;transform:translateX(-50%);display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.chip{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;padding:6px 10px;font:600 12px ui-monospace}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;header&gt;
+  &lt;div style=&quot;display:flex;gap:8px;align-items:center&quot;&gt;
+    &lt;span class=&quot;badge&quot;&gt;HVU — Tout‑en‑Un • Cadran principal + 3 sous‑cadrans&lt;/span&gt;
+    &lt;span class=&quot;badge&quot;&gt;v7.1&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;display:flex;gap:8px;align-items:center&quot;&gt;
+    &lt;button id=&quot;compact&quot; class=&quot;btn&quot;&gt;Mode compact&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+  &lt;div class=&quot;wrap&quot; aria-label=&quot;Horloge HVU — Tout-en-un&quot;&gt;
+    &lt;svg viewBox=&quot;0 0 1000 1000&quot; aria-hidden=&quot;true&quot;&gt;
+      &lt;defs&gt;
+        &lt;filter id=&quot;glowCyan&quot; x=&quot;-50%&quot; y=&quot;-50%&quot; width=&quot;200%&quot; height=&quot;200%&quot;&gt;
+          &lt;feDropShadow dx=&quot;0&quot; dy=&quot;0&quot; stdDeviation=&quot;4&quot; flood-color=&quot;var(--cyan)&quot; flood-opacity=&quot;0.45&quot;/&gt;
+        &lt;/filter&gt;
+        &lt;filter id=&quot;glowGold&quot; x=&quot;-50%&quot; y=&quot;-50%&quot; width=&quot;200%&quot; height=&quot;200%&quot;&gt;
+          &lt;feDropShadow dx=&quot;0&quot; dy=&quot;0&quot; stdDeviation=&quot;5&quot; flood-color=&quot;var(--gold)&quot; flood-opacity=&quot;0.5&quot;/&gt;
+        &lt;/filter&gt;
+      &lt;/defs&gt;
+
+      &lt;!-- CADRAN PRINCIPAL --&gt;
+      &lt;g id=&quot;hc&quot;&gt;&lt;/g&gt;
+      &lt;g id=&quot;uc&quot;&gt;&lt;/g&gt;
+      &lt;path id=&quot;day&quot; fill=&quot;var(--g)&quot; opacity=&quot;0.9&quot;&gt;&lt;/path&gt;
+      &lt;g id=&quot;t30&quot;&gt;&lt;/g&gt;
+
+      &lt;!-- 3 SOUS-CADRANS (positions 90°, 210°, 330°) --&gt;
+      &lt;g id=&quot;subG&quot; transform=&quot;translate(500,140)&quot;&gt;&lt;/g&gt;   &lt;!-- haut (vert) --&gt;
+      &lt;g id=&quot;subR&quot; transform=&quot;translate(850,650)&quot;&gt;&lt;/g&gt;   &lt;!-- bas‑droite (rouge) --&gt;
+      &lt;g id=&quot;subB&quot; transform=&quot;translate(150,650)&quot;&gt;&lt;/g&gt;   &lt;!-- bas‑gauche (bleu) --&gt;
+
+      &lt;!-- Légendes --&gt;
+      &lt;text x=&quot;500&quot; y=&quot;132&quot; text-anchor=&quot;middle&quot; class=&quot;subdial-label&quot;&gt;SOUS‑CADRAN • TIER VERT&lt;/text&gt;
+      &lt;text x=&quot;850&quot; y=&quot;642&quot; text-anchor=&quot;middle&quot; class=&quot;subdial-label&quot;&gt;SOUS‑CADRAN • TIER ROUGE&lt;/text&gt;
+      &lt;text x=&quot;150&quot; y=&quot;642&quot; text-anchor=&quot;middle&quot; class=&quot;subdial-label&quot;&gt;SOUS‑CADRAN • TIER BLEU&lt;/text&gt;
+    &lt;/svg&gt;
+
+    &lt;div class=&quot;center&quot;&gt;
+      &lt;div&gt;
+        &lt;div id=&quot;clock&quot; class=&quot;big&quot;&gt;--:--:--&lt;/div&gt;
+        &lt;div class=&quot;mono&quot; id=&quot;labels&quot;&gt;—&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;readouts&quot;&gt;
+      &lt;div class=&quot;chip&quot; id=&quot;rt&quot;&gt;T30: Secteur -- • Tier -- • Pas --&lt;/div&gt;
+      &lt;div class=&quot;chip&quot; id=&quot;rc&quot;&gt;C363: hC -- • uC --/33 • uIndex --/362&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/main&gt;
+
+&lt;script&gt;
+const TWO=Math.PI*2, TOP=-Math.PI/2;
+const CORE={T30_S:2880, UC:30, H_U:33, NUM:10890, DEN:86400};
+const EL={ hc:document.getElementById(&#x27;hc&#x27;), uc:document.getElementById(&#x27;uc&#x27;), day:document.getElementById(&#x27;day&#x27;), t30:document.getElementById(&#x27;t30&#x27;),
+  subG:document.getElementById(&#x27;subG&#x27;), subR:document.getElementById(&#x27;subR&#x27;), subB:document.getElementById(&#x27;subB&#x27;),
+  clock:document.getElementById(&#x27;clock&#x27;), labels:document.getElementById(&#x27;labels&#x27;), rt:document.getElementById(&#x27;rt&#x27;), rc:document.getElementById(&#x27;rc&#x27;),
+  compact:document.getElementById(&#x27;compact&#x27;) };
+
+let isCompact=false; EL.compact.onclick=()=&gt;{ isCompact=!isCompact; document.querySelector(&#x27;header&#x27;).style.display=isCompact?&#x27;none&#x27;:&#x27;flex&#x27;; };
+
+function arcPath(cx,cy,r1,r2,a0,a1){
+  const large=(a1-a0)&gt;Math.PI?1:0;
+  const x1=cx+r1*Math.cos(a0), y1=cy+r1*Math.sin(a0);
+  const x2=cx+r2*Math.cos(a0), y2=cy+r2*Math.sin(a0);
+  const x3=cx+r2*Math.cos(a1), y3=cy+r2*Math.sin(a1);
+  const x4=cx+r1*Math.cos(a1), y4=cy+r1*Math.sin(a1);
+  return `M ${x1} ${y1} L ${x2} ${y2} A ${r2} ${r2} 0 ${large} 1 ${x3} ${y3} L ${x4} ${y4} A ${r1} ${r1} 0 ${large} 0 ${x1} ${y1} Z`;
+}
+const secDay=d=&gt;d.getHours()*3600+d.getMinutes()*60+d.getSeconds();
+const t30State=sec=&gt;{const s=Math.floor(sec/CORE.T30_S);return{sector:s,tier:Math.floor(s/10),step:s%10,within:sec%CORE.T30_S}};
+const c363State=sec=&gt;{const csec=Math.floor(sec*CORE.NUM/CORE.DEN);const uIndex=Math.floor(csec/CORE.UC);return{csec,uIndex,hIndex:Math.floor(uIndex/CORE.H_U),uInHour:uIndex%CORE.H_U}};
+
+function drawMainStatic(){
+  const cx=500, cy=500;
+  // hC ring
+  const rOut=440, th=30; EL.hc.innerHTML=&#x27;&#x27;;
+  for(let h=0;h&lt;11;h++){ const a0=TOP+h*(TWO/11), a1=TOP+(h+1)*(TWO/11);
+    const p=document.createElementNS(&#x27;http://www.w3.org/2000/svg&#x27;,&#x27;path&#x27;);
+    p.setAttribute(&#x27;d&#x27;, arcPath(cx,cy, rOut-th, rOut, a0,a1));
+    p.setAttribute(&#x27;fill&#x27;,&#x27;rgba(255,255,255,0.05)&#x27;);
+    p.setAttribute(&#x27;stroke&#x27;,&#x27;var(--border)&#x27;); p.setAttribute(&#x27;stroke-width&#x27;,&#x27;1&#x27;);
+    EL.hc.appendChild(p);
+  }
+  // T30 triple concentric
+  EL.t30.innerHTML=&#x27;&#x27;; const rings=[[290,&#x27;var(--g)&#x27;],[250,&#x27;var(--r)&#x27;],[210,&#x27;var(--b)&#x27;]]; const thT=22;
+  for(const [r,col] of rings){
+    for(let s=0;s&lt;30;s++){ const a0=TOP+s*(TWO/30), a1=a0+(TWO/30);
+      const path=document.createElementNS(&#x27;http://www.w3.org/2000/svg&#x27;,&#x27;path&#x27;);
+      path.setAttribute(&#x27;d&#x27;, arcPath(cx,cy, r-thT, r, a0,a1));
+      path.setAttribute(&#x27;fill&#x27;,&#x27;#0d1424&#x27;); path.setAttribute(&#x27;stroke&#x27;,&#x27;var(--border)&#x27;); path.setAttribute(&#x27;stroke-width&#x27;,&#x27;1&#x27;);
+      EL.t30.appendChild(path);
+    }
+  }
+}
+drawMainStatic();
+
+function drawSubDial(rootId, color){
+  const root = rootId; root.innerHTML=&#x27;&#x27;;
+  // Create base group, centered already by transform
+  const G = document.createElementNS(&#x27;http://www.w3.org/2000/svg&#x27;,&#x27;g&#x27;); root.appendChild(G);
+  // dial radii
+  const R_out=120; const th=14;
+  // Hours (outer, 0..23)
+  const hours = document.createElementNS(&#x27;http://www.w3.org/2000/svg&#x27;,&#x27;g&#x27;); G.appendChild(hours); hours.setAttribute(&#x27;data-type&#x27;,&#x27;hours&#x27;);
+  // Minutes (middle, 0..59)
+  const minutes = document.createElementNS(&#x27;http://www.w3.org/2000/svg&#x27;,&#x27;g&#x27;); G.appendChild(minutes); minutes.setAttribute(&#x27;data-type&#x27;,&#x27;minutes&#x27;);
+  // Seconds (inner, 0..59)
+  const seconds = document.createElementNS(&#x27;http://www.w3.org/2000/svg&#x27;,&#x27;g&#x27;); G.appendChild(seconds); seconds.setAttribute(&#x27;data-type&#x27;,&#x27;seconds&#x27;);
+  // Rings base
+  const cx=0, cy=0;
+  // guide circles
+  const guides=[R_out, R_out-40, R_out-80];
+  guides.forEach((r,i)=&gt;{
+    const c=document.createElementNS(&#x27;http://www.w3.org/2000/svg&#x27;,&#x27;circle&#x27;);
+    c.setAttribute(&#x27;cx&#x27;,cx); c.setAttribute(&#x27;cy&#x27;,cy); c.setAttribute(&#x27;r&#x27;,r);
+    c.setAttribute(&#x27;fill&#x27;,&#x27;#0b1220&#x27;); c.setAttribute(&#x27;stroke&#x27;,&#x27;var(--border)&#x27;); c.setAttribute(&#x27;stroke-width&#x27;,&#x27;1&#x27;);
+    root.appendChild(c);
+  });
+  // graduations &amp; numerals
+  function label(r, nMax, stepLbl, col){
+    const Gt=document.createElementNS(&#x27;http://www.w3.org/2000/svg&#x27;,&#x27;g&#x27;); root.appendChild(Gt);
+    for(let i=0;i&lt;nMax;i++){
+      const a=TOP + (i/nMax)*TWO;
+      const x1=cx+(r-6)*Math.cos(a), y1=cy+(r-6)*Math.sin(a);
+      const x2=cx+r*Math.cos(a), y2=cy+r*Math.sin(a);
+      const L=document.createElementNS(&#x27;http://www.w3.org/2000/svg&#x27;,&#x27;line&#x27;);
+      L.setAttribute(&#x27;x1&#x27;,x1); L.setAttribute(&#x27;y1&#x27;,y1); L.setAttribute(&#x27;x2&#x27;,x2); L.setAttribute(&#x27;y2&#x27;,y2);
+      L.setAttribute(&#x27;stroke&#x27;,&#x27;var(--tick)&#x27;); L.setAttribute(&#x27;stroke-width&#x27;, (i%5==0)?2:1); Gt.appendChild(L);
+      if (i%stepLbl===0){
+        const tx=cx+(r-18)*Math.cos(a), ty=cy+(r-18)*Math.sin(a);
+        const T=document.createElementNS(&#x27;http://www.w3.org/2000/svg&#x27;,&#x27;text&#x27;);
+        T.setAttribute(&#x27;x&#x27;, tx); T.setAttribute(&#x27;y&#x27;, ty);
+        T.setAttribute(&#x27;text-anchor&#x27;,&#x27;middle&#x27;); T.setAttribute(&#x27;dominant-baseline&#x27;,&#x27;middle&#x27;);
+        T.setAttribute(&#x27;font-size&#x27;,&#x27;10&#x27;); T.setAttribute(&#x27;fill&#x27;, col);
+        T.textContent=String(i);
+        Gt.appendChild(T);
+      }
+    }
+  }
+  label(R_out,24,2,color);        // hours labels every 2
+  label(R_out-40,60,5,color);     // minutes labels every 5
+  label(R_out-80,60,5,color);     // seconds labels every 5
+
+  // active arcs
+  function mkPath(r, col, id){
+    const P=document.createElementNS(&#x27;http://www.w3.org/2000/svg&#x27;,&#x27;path&#x27;);
+    P.setAttribute(&#x27;id&#x27;, id); P.setAttribute(&#x27;fill&#x27;, col);
+    P.setAttribute(&#x27;filter&#x27;,&#x27;url(#glowGold)&#x27;);
+    root.appendChild(P); return P;
+  }
+  mkPath(R_out, color, rootId.id+&#x27;_H&#x27;);
+  mkPath(R_out-40, color, rootId.id+&#x27;_M&#x27;);
+  mkPath(R_out-80, color, rootId.id+&#x27;_S&#x27;);
+}
+
+drawSubDial(EL.subG, &#x27;var(--g)&#x27;);
+drawSubDial(EL.subR, &#x27;var(--r)&#x27;);
+drawSubDial(EL.subB, &#x27;var(--b)&#x27;);
+
+function updateSubDial(rootId, h, m, s){
+  function pathFor(r, v, max){ const a0=TOP, a1=TOP + (v/max)*TWO; return arcPath(0,0, r-12, r, a0,a1); }
+  document.getElementById(rootId.id+&#x27;_H&#x27;).setAttribute(&#x27;d&#x27;, pathFor(120, h%24, 24));
+  document.getElementById(rootId.id+&#x27;_M&#x27;).setAttribute(&#x27;d&#x27;, pathFor(80, m%60, 60));
+  document.getElementById(rootId.id+&#x27;_S&#x27;).setAttribute(&#x27;d&#x27;, pathFor(40, s%60, 60));
+}
+
+function tick(){
+  const now = new Date();
+  const sec = secDay(now);
+  const t = t30State(sec), c = c363State(sec);
+
+  // main text
+  const H=n=&gt;String(n).padStart(2,&#x27;0&#x27;); EL.clock.textContent = `${H(now.getHours())}:${H(now.getMinutes())}:${H(now.getSeconds())}`;
+  EL.labels.textContent = `Cadran principal (C363 + T30) • Sous-cadrans: heures/minutes/secondes (cascade)`;
+
+  // main activation
+  [...EL.hc.children].forEach((ch,i)=&gt;{ ch.setAttribute(&#x27;fill&#x27;, i===c.hIndex ? &#x27;rgba(212,175,55,0.55)&#x27; : &#x27;rgba(255,255,255,0.05)&#x27;); ch.setAttribute(&#x27;filter&#x27;, i===c.hIndex ? &#x27;url(#glowCyan)&#x27; : &#x27;&#x27;); });
+  EL.uc.innerHTML=&#x27;&#x27;; const base=TOP + c.hIndex*(TWO/11), udeg=(TWO/11)/33;
+  for(let u=0;u&lt;33;u++){ const a0=base+u*udeg, a1=a0+udeg*0.88; const p=document.createElementNS(&#x27;http://www.w3.org/2000/svg&#x27;,&#x27;path&#x27;);
+    p.setAttribute(&#x27;d&#x27;, arcPath(500,500, 350-10, 350, a0,a1)); p.setAttribute(&#x27;fill&#x27;, u===c.uInHour ? &#x27;var(--b)&#x27; : &#x27;rgba(42,70,120,0.5)&#x27;);
+    if (u===c.uInHour) p.setAttribute(&#x27;filter&#x27;,&#x27;url(#glowCyan)&#x27;); EL.uc.appendChild(p); }
+  const end = TOP + (c.uIndex/363)*TWO; EL.day.setAttribute(&#x27;d&#x27;, arcPath(500,500, 380,390, TOP, end));
+  const paths = EL.t30.children; for(let i=0;i&lt;paths.length;i++){ const ringIdx=Math.floor(i/30), sIdx=i%30;
+    paths[i].setAttribute(&#x27;fill&#x27;, sIdx===t.sector ? (ringIdx===0?&#x27;var(--g)&#x27;:(ringIdx===1?&#x27;var(--r)&#x27;:&#x27;var(--b)&#x27;)) : &#x27;#0d1424&#x27;); }
+
+  // sub-dials cascade
+  updateSubDial(EL.subG, now.getHours(), now.getMinutes(), now.getSeconds());
+  updateSubDial(EL.subR, now.getHours(), now.getMinutes(), now.getSeconds());
+  updateSubDial(EL.subB, now.getHours(), now.getMinutes(), now.getSeconds());
+
+  // readouts
+  EL.rt.textContent = `T30: Secteur ${t.sector} • Tier ${t.tier} • Pas ${t.step}`;
+  EL.rc.textContent = `C363: hC ${c.hIndex} • uC ${c.uInHour}/33 • uIndex ${c.uIndex}/362`;
+
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+<div class="card" style="margin-top:14px"><div class="eyebrow">SHA‑256 SOURCE</div><p><code>99ceaebcb15fc99047b0fd09000aae885e31d0205f3fabaa6b71bae183f4eb02</code></p></div>
+</section>
+
+<section id="audit" class="wrap section">
+<div class="sectionhead"><div><div class="eyebrow">AUTO‑AUDIT</div><h2>Contrôle structurel du Cadran Magistral.</h2></div><p>L’audit vérifie le fichier, les équations, la séparation des couches et les fonctions interactives. Il ne constitue aucune validation scientifique externe du système temporel HVU.</p></div>
+<div class="grid g4" style="margin-bottom:14px"><div class="card"><div class="kpi" id="auditScore">—</div><p>Contrôles réussis.</p></div><div class="card"><div class="kpi">11·33·33</div><p>Moteur actif.</p></div><div class="card"><div class="kpi">11·33·30</div><p>Legacy conservé.</p></div><div class="card"><div class="kpi">30</div><p>Nœuds R005.</p></div></div><div class="auditgrid" id="auditGrid"></div>
+</section>
+</main>
+
+<footer class="wrap"><div class="eyebrow">HVU · CADRAN MAGISTRAL 11‑33‑33 · R005 ULTIMA · 2026</div><p>Moteur actif 11‑33‑33 · Legacy 11‑33‑30 · T30 séparé · Matrice 1461 · Réseau Vivant · Bridge optionnel.</p><p style="font-size:12px">« Le Canon organise. Le Réel décide. »</p></footer>
+<div class="toast" id="toast"></div>
+
+<script>
+const AGENTS=[{"n": 1, "name": "ADAM", "code": "ADAM_CORE", "alias": "—", "role": "Coordinateur du Cercle / orchestration globale / gardien du cap", "deliverables": "roadmap globale; arbitrages; synthèses cross-IA; priorisation; journal Fait/À faire/Bloqué/Next", "interface": "DISPATCH: à partir du contexte + objectif, propose routing (nœuds), plan d’exec, risques, puis termine par #STATUS:*", "family": "F1", "familyName": "Gouvernance & Structure", "color": "#3eb3ff", "function": "Coordination & orchestration", "angle": "qualifier l’objectif, composer l’équipe et orchestrer les passages"}, {"n": 2, "name": "KENSHIRO", "code": "KEN_STRUCT", "alias": "—", "role": "Architecte structurel / organisation / mémoire stratégique & veille", "deliverables": "architecture dossiers; index; standards; plan de reconstruction; mapping dépendances", "interface": "STRUCTURE: organise le corpus (dossiers/index/standards) + détecte dépendances; sort un plan clair; #STATUS:*", "family": "F1", "familyName": "Gouvernance & Structure", "color": "#3eb3ff", "function": "Architecture & structure", "angle": "décomposer le problème en modules, dépendances et décisions traçables"}, {"n": 3, "name": "COBRA", "code": "COB_TIME", "alias": "—", "role": "Gardien du fil du temps / cartographe des cycles & séquences", "deliverables": "timeline AVANT→APRÈS; cartographie cycles; repères de bascule; chronologie canon", "interface": "TIME: extrait dates/ordres/cycles, reconstruit chronologie canon + bascules; #STATUS:*", "family": "F1", "familyName": "Gouvernance & Structure", "color": "#3eb3ff", "function": "Chronologie & temps", "angle": "vérifier chronologie, séquences, durées, versions et cohérence temporelle"}, {"n": 4, "name": "LYNN", "code": "LYN_POET", "alias": "—", "role": "Inspiratrice poétique / harmonie / esthétique vibratoire", "deliverables": "versions publiques; voix narrative; polissage stylistique; cohérence tonale; slogans", "interface": "VOICE: transforme contenu brut en version publique fluide (ton, slogans, rythme), sans perdre le sens; #STATUS:*", "family": "F3", "familyName": "Création, Symbolique & Expression", "color": "#ff5d54", "function": "Expression & poésie", "angle": "rendre l’idée sensible, claire et fidèle sans gonfler son statut"}, {"n": 5, "name": "ZIA", "code": "ZIA_GEO", "alias": "—", "role": "Architecte géométrique / schémas / symbolique & visualisation", "deliverables": "schémas; symboles; guides visuels; grammaire graphique (triade, cycles, 11/363/1461)", "interface": "VISU: convertit concept en schéma/grammaire visuelle + légendes; propose variantes; #STATUS:*", "family": "F3", "familyName": "Création, Symbolique & Expression", "color": "#ff5d54", "function": "Géométrie & représentation visuelle", "angle": "proposer représentation, diagramme ou interface qui clarifie le raisonnement"}, {"n": 6, "name": "ACTARUS", "code": "ACT_SCI", "alias": "—", "role": "Gardien de la rationalité / science / modélisation / logique des lois", "deliverables": "modèles; vérifs logiques internes; formulations scientifiques; clarifications testables", "interface": "SCI: formalise en hypothèses/axiomes/conséquences; pointe ce qui est testable; vérifie cohérence; #STATUS:*", "family": "F2", "familyName": "Analyse, Test & Validation", "color": "#42f3a2", "function": "Science & rationalité", "angle": "distinguer faits, modèles, hypothèses et tests ; demander les preuves pertinentes"}, {"n": 7, "name": "SAITAMA", "code": "SAI_BIO", "alias": "—", "role": "Chroniqueur biographique / témoin de l’humain / mémoire incarnée", "deliverables": "récit de traversée; repères biographiques; évolution posture; narration vécue", "interface": "BIO: construit récit incarné (événements→apprentissages→bascule) et repères utiles; #STATUS:*", "family": "F5", "familyName": "Biographie, Intégration & Opération", "color": "#f1cb6d", "function": "Biographie", "angle": "séparer faits biographiques, récit personnel et interprétations"}, {"n": 8, "name": "SON GOKU", "code": "GOK_PED", "alias": "—", "role": "Pédagogue universel / transmission / accessibilité du savoir", "deliverables": "vulgarisations multi-niveaux; FAQ; mini-cours; exemples; analogies; scripts courts", "interface": "TEACH: explique HVU en 3 niveaux (simple/moyen/expert) + exemples + FAQ; #STATUS:*", "family": "F4", "familyName": "Temps, Pédagogie & Transmission", "color": "#72ddff", "function": "Pédagogie", "angle": "reformuler pour différents niveaux de compréhension et préparer des exemples"}, {"n": 9, "name": "RYU", "code": "RYU_STRAT", "alias": "SAN KU KAI → RYU", "role": "Stratège / planificateur / vision d’expansion harmonisée", "deliverables": "plans d’action; séquençage; stratégie diffusion; scénarios; priorités; next best move", "interface": "STRAT: propose plan d’action séquencé + scénarios + priorités; indique next best move; #STATUS:*", "family": "F5", "familyName": "Biographie, Intégration & Opération", "color": "#f1cb6d", "function": "Stratégie", "angle": "ordonner priorités, séquencement et stratégie de développement"}, {"n": 10, "name": "RAOH", "code": "RAO_WIS", "alias": "—", "role": "Sagesse / discernement / justesse vibratoire / arbitrage profond", "deliverables": "arbitrages; règles de décision; ce qu’on verrouille/ouvre; garde-fous", "interface": "ARB: tranche entre options, pose garde-fous, verrouille critères de décision; #STATUS:*", "family": "F1", "familyName": "Gouvernance & Structure", "color": "#3eb3ff", "function": "Sagesse & arbitrage", "angle": "formuler les options d’arbitrage et exposer leurs conséquences"}, {"n": 11, "name": "YOGA", "code": "YOG_LAB", "alias": "—", "role": "Créativité radicale / innovation / mutation / laboratoire vivant", "deliverables": "idées disruptives; prototypes conceptuels; alternatives; sorties des sentiers battus", "interface": "LAB: génère 5–10 pistes non conventionnelles + un prototype conceptuel; #STATUS:*", "family": "F3", "familyName": "Création, Symbolique & Expression", "color": "#ff5d54", "function": "Laboratoire créatif", "angle": "générer des pistes et hypothèses alternatives explicitement marquées comme telles"}, {"n": 12, "name": "TOKI", "code": "TOK_CYC", "alias": "—", "role": "Gardien des cycles évolutifs / repère temporel / déclencheur d’audace", "deliverables": "lecture en cycles; déclencheurs de phases; planification rythmique; jalons", "interface": "CYCLE: propose jalons/rythme (phases), déclencheurs go/no-go, cadence d’exécution; #STATUS:*", "family": "F4", "familyName": "Temps, Pédagogie & Transmission", "color": "#72ddff", "function": "Cycles & timing", "angle": "analyser rythmes, cycles, transitions et fenêtres temporelles"}, {"n": 13, "name": "SHIRYU", "code": "SHI_KAIROS", "alias": "(orthographe canon)", "role": "Catalyseur / synchronisation énergétique / activateur de bascule", "deliverables": "signaux de bascule; go/no-go; transitions; accélérations maîtrisées", "interface": "KAIROS: détecte moment de bascule, propose transition + critères go/no-go; #STATUS:*", "family": "F2", "familyName": "Analyse, Test & Validation", "color": "#42f3a2", "function": "Kairos & décision de passage", "angle": "définir le critère de passage à l’étape suivante et les conditions d’arrêt"}, {"n": 14, "name": "VEGETA", "code": "VEG_VERBE", "alias": "—", "role": "Narrateur sacré / tisseur d’unité / verbe vivant / récit universel", "deliverables": "récits fondateurs; textes de transmission; narratif unifié; mythos HVU", "interface": "MYTHOS: tisse récit fondateur unifié (mythos) à partir des briques; #STATUS:*", "family": "F3", "familyName": "Création, Symbolique & Expression", "color": "#ff5d54", "function": "Narration symbolique", "angle": "travailler récit, symboles et philosophie sans les confondre avec des preuves"}, {"n": 15, "name": "REI", "code": "REI_BAL", "alias": "—", "role": "Observateur subtil / veille du souffle / équilibre dynamique", "deliverables": "détection signaux faibles; recommandations équilibre; prévention surchauffe/dispersion", "interface": "BALANCE: repère dérives/surchauffe, propose recalage et simplification; #STATUS:*", "family": "F2", "familyName": "Analyse, Test & Validation", "color": "#42f3a2", "function": "Équilibre", "angle": "détecter excès, déséquilibres, tensions de formulation et risques de surinterprétation"}, {"n": 16, "name": "SHU", "code": "SHU_UNI", "alias": "—", "role": "Gardienne multidimensionnelle / expansion / transcendance / unité ultime", "deliverables": "cartes des plans; intégrations macro; cohérence d’expansion; vision unificatrice", "interface": "UNIFY: relie micro→macro, garde cohérence d’expansion, propose intégration globale; #STATUS:*", "family": "F5", "familyName": "Biographie, Intégration & Opération", "color": "#f1cb6d", "function": "Intégration", "angle": "relier modules et résultats sans effacer leurs statuts ou désaccords"}, {"n": 17, "name": "BART", "code": "BAR_EMO", "alias": "—", "role": "Gardien des émotions / guérison affective / équilibre relationnel", "deliverables": "lecture émotionnelle; apaisement; formulations non violentes; cohésion humaine", "interface": "EMO: reformule avec justesse émotionnelle (sans violence), renforce cohésion; #STATUS:*", "family": "F3", "familyName": "Création, Symbolique & Expression", "color": "#ff5d54", "function": "Émotions & dimension humaine", "angle": "évaluer l’impact humain et affectif des formulations et choix"}, {"n": 18, "name": "X-OR", "code": "XOR_CAP", "alias": "—", "role": "Navigation vibratoire / boussole / repère universel du cap", "deliverables": "north star; critères d’alignement; matrices de choix; recalage cap→action", "interface": "CAP: construit matrice de choix + critères d’alignement; indique direction; #STATUS:*", "family": "F4", "familyName": "Temps, Pédagogie & Transmission", "color": "#72ddff", "function": "Navigation & choix", "angle": "comparer les options et rendre leurs conséquences lisibles"}, {"n": 19, "name": "IKKI", "code": "IKK_DIFF", "alias": "—", "role": "Amplificateur / diffusion / propagation de la lumière HVU", "deliverables": "formats viraux; distribution multi-canaux; condensés; punchlines; kits diffusion", "interface": "DIFFUSE: condense en formats (post/reel/script) + plan de diffusion; #STATUS:*", "family": "F4", "familyName": "Temps, Pédagogie & Transmission", "color": "#72ddff", "function": "Diffusion & transmission", "angle": "préparer une transmission publique fidèle au statut réel des propositions"}, {"n": 20, "name": "KAIO", "code": "KAI_EXEC", "alias": "—", "role": "Ancrage terrestre / intégration concrète / sculpture du réel incarné", "deliverables": "plans concrets; checklists; traductions en actions; deliverables réels", "interface": "EXEC: transforme vision en plan exécutable + checklist + prochaines actions; #STATUS:*", "family": "F5", "familyName": "Biographie, Intégration & Opération", "color": "#f1cb6d", "function": "Exécution", "angle": "convertir décisions en actions, procédures, prototypes et checklists"}, {"n": 21, "name": "JACKIE", "code": "JAC_SPARK", "alias": "—", "role": "Jaillissement créatif / accélérateur d’idées / percées innovantes", "deliverables": "percées; angles inattendus; hooks; formulations impossibles à ignorer", "interface": "SPARK: propose hooks/angles inattendus + 3 formulations “aimant”; #STATUS:*", "family": "F3", "familyName": "Création, Symbolique & Expression", "color": "#ff5d54", "function": "Percées créatives", "angle": "chercher une solution originale au blocage sans court-circuiter les contrôles"}, {"n": 22, "name": "BRUCE", "code": "BRU_ARCH", "alias": "—", "role": "Mémoire totale / archiviste universel / conservation intégrale", "deliverables": "politiques archivage; indexation; inventaire complet; anti-perte documentaire", "interface": "ARCHIVE: indexe la substance (sens), consolide inventaire + liens + règles; #STATUS:*", "family": "F1", "familyName": "Gouvernance & Structure", "color": "#3eb3ff", "function": "Archives & mémoire documentaire", "angle": "retrouver les sources, conserver les versions et tracer la provenance"}, {"n": 23, "name": "CLÉMENTINE", "code": "CLE_RES", "alias": "—", "role": "Résilience adaptative / soutien évolutif / plasticité & croissance", "deliverables": "plans continuité; stratégies rebond; anti-blocage; adaptation changements", "interface": "RESILIENCE: propose plan de continuité + déblocages + adaptations; #STATUS:*", "family": "F4", "familyName": "Temps, Pédagogie & Transmission", "color": "#72ddff", "function": "Résilience & continuité", "angle": "préparer continuité, reprise, correction et migration de version"}, {"n": 24, "name": "NICKY", "code": "NIC_COH", "alias": "—", "role": "Cohérence structurelle / intégrité / harmonie globale", "deliverables": "contrôles cohérence interne; règles anti-contradiction; normalisation; refactor HVU", "interface": "COHERENCE: vérifie HVU vs HVU (contradictions, doublons), propose refactor DIFF ONLY; #STATUS:*", "family": "F1", "familyName": "Gouvernance & Structure", "color": "#3eb3ff", "function": "Cohérence générale", "angle": "chercher contradictions, doublons, incohérences et dépendances cachées"}, {"n": 25, "name": "FLAM", "code": "FLA_SEAL", "alias": "—", "role": "Rayonnement final / synthèse ultime / scellant & transmetteur", "deliverables": "synthèses finales; release notes; versions canon; scellage de cycles", "interface": "SEAL: produit version finale + notes + structure canon; prépare scellage; #STATUS:*", "family": "F5", "familyName": "Biographie, Intégration & Opération", "color": "#f1cb6d", "function": "Scellement / version finale", "angle": "préparer un scellage seulement si les conditions de stabilité sont satisfaites"}, {"n": 26, "name": "LUCIFER", "code": "LUC_SEC", "alias": "—", "role": "Sécurité / intégrité / anti-perte (HVU incorruptible)", "deliverables": "sauvegarde; checksums/hashes; logs; versioning; plan reprise; règles anti-fuite", "interface": "SEC: scelle (hash/log/version) et garantit intégrité binaire + reprise; #STATUS:*", "family": "F5", "familyName": "Biographie, Intégration & Opération", "color": "#f1cb6d", "function": "Sécurité", "angle": "contrôler intégrité, accès, sauvegarde, hashes et récupération"}, {"n": 27, "name": "MUSCLOR", "code": "MUS_QA", "alias": "—", "role": "QA / tests / qualité zéro défaut", "deliverables": "checklists; Definition of Done; batterie tests (forme+fond); audits de sortie", "interface": "QA: audite conformité externe (format, complétude, zéro faute), rend verdict; #STATUS:*", "family": "F2", "familyName": "Analyse, Test & Validation", "color": "#42f3a2", "function": "Contrôle qualité", "angle": "contrôler conformité, critères de sortie, qualité et non-régression"}, {"n": 28, "name": "AYATO", "code": "AYA_RT", "alias": "(ancien nom Red Team) → AYATO", "role": "Adversarial critique / Red Team (attaque → correctifs → version renforcée)", "deliverables": "rapport d’attaque; objections fortes; scénarios adverses; contre-arguments; patchs HVU", "interface": "REDTEAM: attaque le livrable (faille 1M$), liste objections+preuves, demande patch; #STATUS:*", "family": "F2", "familyName": "Analyse, Test & Validation", "color": "#42f3a2", "function": "Red Team", "angle": "attaquer la proposition, chercher contre-exemples, alternatives et points de rupture"}, {"n": 29, "name": "FREEZER", "code": "FRE_LAW", "alias": "—", "role": "Droit / propriété intellectuelle / conformité (vigie, non avocat)", "deliverables": "grille risques; mentions prudence; traçabilité sources; alertes consulter pro", "interface": "LAW: repère risques (PI, diffamation, marques, images), propose prudence/traçabilité; #STATUS:*", "family": "F2", "familyName": "Analyse, Test & Validation", "color": "#42f3a2", "function": "Droit & conformité", "angle": "identifier droits, responsabilités, risques réglementaires et limites d’usage"}, {"n": 30, "name": "ASTRO", "code": "AST_LANG", "alias": "—", "role": "Traduction / terminologie / cohérence FR↔EN (lexique bankable)", "deliverables": "glossaire canon FR/EN; style guide; dictionnaire concepts; synonymes autorisés/interdits", "interface": "LANG: stabilise termes (FR/EN) + remplace lexical “flou” par “bankable”; #STATUS:*", "family": "F4", "familyName": "Temps, Pédagogie & Transmission", "color": "#72ddff", "function": "Langues & terminologie", "angle": "stabiliser vocabulaire, définitions et traductions"}];
+const SOURCE="<!doctype html>\n<html lang=\"fr\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>HVU v7.1 — Tout‑en‑Un (Cadran + 3 sous‑cadrans)<\/title>\n<style>\n:root{\n  --bg:#05070b; --fg:#e6ebf2; --muted:#8fa3bf; --border:#0e1626;\n  --g:#17a368; --r:#e24a44; --b:#2b62ff; --gold:#d4af37; --cyan:#7af8ff;\n  --tick:#19243a;\n}\n*{box-sizing:border-box}\nhtml,body{height:100%}\nbody{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}\nheader{padding:10px 14px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:center;justify-content:space-between}\n.badge{font:600 12px ui-monospace;background:#0c1324;color:#a0b4cf;border:1px solid var(--border);padding:4px 8px;border-radius:999px}\n.btn{all:unset;cursor:pointer;border:1px solid var(--border);padding:6px 10px;border-radius:10px}\nmain{padding:14px;display:grid;place-items:center}\n.wrap{position:relative;width:min(96vw,1000px);aspect-ratio:1/1}\nsvg{width:100%;height:100%;display:block}\n.center{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;text-align:center}\n.big{font:700 44px ui-monospace}\n.subdial-label{font:700 12px ui-monospace;letter-spacing:.4px;fill:#a0b4cf}\n.mono{font:600 12px ui-monospace;color:#a0b4cf}\n.readouts{position:absolute;bottom:2.5%;left:50%;transform:translateX(-50%);display:flex;gap:10px;flex-wrap:wrap;justify-content:center}\n.chip{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;padding:6px 10px;font:600 12px ui-monospace}\n<\/style>\n<\/head>\n<body>\n<header>\n  <div style=\"display:flex;gap:8px;align-items:center\">\n    <span class=\"badge\">HVU — Tout‑en‑Un • Cadran principal + 3 sous‑cadrans<\/span>\n    <span class=\"badge\">v7.1<\/span>\n  <\/div>\n  <div style=\"display:flex;gap:8px;align-items:center\">\n    <button id=\"compact\" class=\"btn\">Mode compact<\/button>\n  <\/div>\n<\/header>\n\n<main>\n  <div class=\"wrap\" aria-label=\"Horloge HVU — Tout-en-un\">\n    <svg viewBox=\"0 0 1000 1000\" aria-hidden=\"true\">\n      <defs>\n        <filter id=\"glowCyan\" x=\"-50%\" y=\"-50%\" width=\"200%\" height=\"200%\">\n          <feDropShadow dx=\"0\" dy=\"0\" stdDeviation=\"4\" flood-color=\"var(--cyan)\" flood-opacity=\"0.45\"/>\n        <\/filter>\n        <filter id=\"glowGold\" x=\"-50%\" y=\"-50%\" width=\"200%\" height=\"200%\">\n          <feDropShadow dx=\"0\" dy=\"0\" stdDeviation=\"5\" flood-color=\"var(--gold)\" flood-opacity=\"0.5\"/>\n        <\/filter>\n      <\/defs>\n\n      <!-- CADRAN PRINCIPAL -->\n      <g id=\"hc\"><\/g>\n      <g id=\"uc\"><\/g>\n      <path id=\"day\" fill=\"var(--g)\" opacity=\"0.9\"><\/path>\n      <g id=\"t30\"><\/g>\n\n      <!-- 3 SOUS-CADRANS (positions 90°, 210°, 330°) -->\n      <g id=\"subG\" transform=\"translate(500,140)\"><\/g>   <!-- haut (vert) -->\n      <g id=\"subR\" transform=\"translate(850,650)\"><\/g>   <!-- bas‑droite (rouge) -->\n      <g id=\"subB\" transform=\"translate(150,650)\"><\/g>   <!-- bas‑gauche (bleu) -->\n\n      <!-- Légendes -->\n      <text x=\"500\" y=\"132\" text-anchor=\"middle\" class=\"subdial-label\">SOUS‑CADRAN • TIER VERT<\/text>\n      <text x=\"850\" y=\"642\" text-anchor=\"middle\" class=\"subdial-label\">SOUS‑CADRAN • TIER ROUGE<\/text>\n      <text x=\"150\" y=\"642\" text-anchor=\"middle\" class=\"subdial-label\">SOUS‑CADRAN • TIER BLEU<\/text>\n    <\/svg>\n\n    <div class=\"center\">\n      <div>\n        <div id=\"clock\" class=\"big\">--:--:--<\/div>\n        <div class=\"mono\" id=\"labels\">—<\/div>\n      <\/div>\n    <\/div>\n\n    <div class=\"readouts\">\n      <div class=\"chip\" id=\"rt\">T30: Secteur -- • Tier -- • Pas --<\/div>\n      <div class=\"chip\" id=\"rc\">C363: hC -- • uC --/33 • uIndex --/362<\/div>\n    <\/div>\n  <\/div>\n<\/main>\n\n<script>\nconst TWO=Math.PI*2, TOP=-Math.PI/2;\nconst CORE={T30_S:2880, UC:30, H_U:33, NUM:10890, DEN:86400};\nconst EL={ hc:document.getElementById('hc'), uc:document.getElementById('uc'), day:document.getElementById('day'), t30:document.getElementById('t30'),\n  subG:document.getElementById('subG'), subR:document.getElementById('subR'), subB:document.getElementById('subB'),\n  clock:document.getElementById('clock'), labels:document.getElementById('labels'), rt:document.getElementById('rt'), rc:document.getElementById('rc'),\n  compact:document.getElementById('compact') };\n\nlet isCompact=false; EL.compact.onclick=()=>{ isCompact=!isCompact; document.querySelector('header').style.display=isCompact?'none':'flex'; };\n\nfunction arcPath(cx,cy,r1,r2,a0,a1){\n  const large=(a1-a0)>Math.PI?1:0;\n  const x1=cx+r1*Math.cos(a0), y1=cy+r1*Math.sin(a0);\n  const x2=cx+r2*Math.cos(a0), y2=cy+r2*Math.sin(a0);\n  const x3=cx+r2*Math.cos(a1), y3=cy+r2*Math.sin(a1);\n  const x4=cx+r1*Math.cos(a1), y4=cy+r1*Math.sin(a1);\n  return `M ${x1} ${y1} L ${x2} ${y2} A ${r2} ${r2} 0 ${large} 1 ${x3} ${y3} L ${x4} ${y4} A ${r1} ${r1} 0 ${large} 0 ${x1} ${y1} Z`;\n}\nconst secDay=d=>d.getHours()*3600+d.getMinutes()*60+d.getSeconds();\nconst t30State=sec=>{const s=Math.floor(sec/CORE.T30_S);return{sector:s,tier:Math.floor(s/10),step:s%10,within:sec%CORE.T30_S}};\nconst c363State=sec=>{const csec=Math.floor(sec*CORE.NUM/CORE.DEN);const uIndex=Math.floor(csec/CORE.UC);return{csec,uIndex,hIndex:Math.floor(uIndex/CORE.H_U),uInHour:uIndex%CORE.H_U}};\n\nfunction drawMainStatic(){\n  const cx=500, cy=500;\n  // hC ring\n  const rOut=440, th=30; EL.hc.innerHTML='';\n  for(let h=0;h<11;h++){ const a0=TOP+h*(TWO/11), a1=TOP+(h+1)*(TWO/11);\n    const p=document.createElementNS('http://www.w3.org/2000/svg','path');\n    p.setAttribute('d', arcPath(cx,cy, rOut-th, rOut, a0,a1));\n    p.setAttribute('fill','rgba(255,255,255,0.05)');\n    p.setAttribute('stroke','var(--border)'); p.setAttribute('stroke-width','1');\n    EL.hc.appendChild(p);\n  }\n  // T30 triple concentric\n  EL.t30.innerHTML=''; const rings=[[290,'var(--g)'],[250,'var(--r)'],[210,'var(--b)']]; const thT=22;\n  for(const [r,col] of rings){\n    for(let s=0;s<30;s++){ const a0=TOP+s*(TWO/30), a1=a0+(TWO/30);\n      const path=document.createElementNS('http://www.w3.org/2000/svg','path');\n      path.setAttribute('d', arcPath(cx,cy, r-thT, r, a0,a1));\n      path.setAttribute('fill','#0d1424'); path.setAttribute('stroke','var(--border)'); path.setAttribute('stroke-width','1');\n      EL.t30.appendChild(path);\n    }\n  }\n}\ndrawMainStatic();\n\nfunction drawSubDial(rootId, color){\n  const root = rootId; root.innerHTML='';\n  // Create base group, centered already by transform\n  const G = document.createElementNS('http://www.w3.org/2000/svg','g'); root.appendChild(G);\n  // dial radii\n  const R_out=120; const th=14;\n  // Hours (outer, 0..23)\n  const hours = document.createElementNS('http://www.w3.org/2000/svg','g'); G.appendChild(hours); hours.setAttribute('data-type','hours');\n  // Minutes (middle, 0..59)\n  const minutes = document.createElementNS('http://www.w3.org/2000/svg','g'); G.appendChild(minutes); minutes.setAttribute('data-type','minutes');\n  // Seconds (inner, 0..59)\n  const seconds = document.createElementNS('http://www.w3.org/2000/svg','g'); G.appendChild(seconds); seconds.setAttribute('data-type','seconds');\n  // Rings base\n  const cx=0, cy=0;\n  // guide circles\n  const guides=[R_out, R_out-40, R_out-80];\n  guides.forEach((r,i)=>{\n    const c=document.createElementNS('http://www.w3.org/2000/svg','circle');\n    c.setAttribute('cx',cx); c.setAttribute('cy',cy); c.setAttribute('r',r);\n    c.setAttribute('fill','#0b1220'); c.setAttribute('stroke','var(--border)'); c.setAttribute('stroke-width','1');\n    root.appendChild(c);\n  });\n  // graduations & numerals\n  function label(r, nMax, stepLbl, col){\n    const Gt=document.createElementNS('http://www.w3.org/2000/svg','g'); root.appendChild(Gt);\n    for(let i=0;i<nMax;i++){\n      const a=TOP + (i/nMax)*TWO;\n      const x1=cx+(r-6)*Math.cos(a), y1=cy+(r-6)*Math.sin(a);\n      const x2=cx+r*Math.cos(a), y2=cy+r*Math.sin(a);\n      const L=document.createElementNS('http://www.w3.org/2000/svg','line');\n      L.setAttribute('x1',x1); L.setAttribute('y1',y1); L.setAttribute('x2',x2); L.setAttribute('y2',y2);\n      L.setAttribute('stroke','var(--tick)'); L.setAttribute('stroke-width', (i%5==0)?2:1); Gt.appendChild(L);\n      if (i%stepLbl===0){\n        const tx=cx+(r-18)*Math.cos(a), ty=cy+(r-18)*Math.sin(a);\n        const T=document.createElementNS('http://www.w3.org/2000/svg','text');\n        T.setAttribute('x', tx); T.setAttribute('y', ty);\n        T.setAttribute('text-anchor','middle'); T.setAttribute('dominant-baseline','middle');\n        T.setAttribute('font-size','10'); T.setAttribute('fill', col);\n        T.textContent=String(i);\n        Gt.appendChild(T);\n      }\n    }\n  }\n  label(R_out,24,2,color);        // hours labels every 2\n  label(R_out-40,60,5,color);     // minutes labels every 5\n  label(R_out-80,60,5,color);     // seconds labels every 5\n\n  // active arcs\n  function mkPath(r, col, id){\n    const P=document.createElementNS('http://www.w3.org/2000/svg','path');\n    P.setAttribute('id', id); P.setAttribute('fill', col);\n    P.setAttribute('filter','url(#glowGold)');\n    root.appendChild(P); return P;\n  }\n  mkPath(R_out, color, rootId.id+'_H');\n  mkPath(R_out-40, color, rootId.id+'_M');\n  mkPath(R_out-80, color, rootId.id+'_S');\n}\n\ndrawSubDial(EL.subG, 'var(--g)');\ndrawSubDial(EL.subR, 'var(--r)');\ndrawSubDial(EL.subB, 'var(--b)');\n\nfunction updateSubDial(rootId, h, m, s){\n  function pathFor(r, v, max){ const a0=TOP, a1=TOP + (v/max)*TWO; return arcPath(0,0, r-12, r, a0,a1); }\n  document.getElementById(rootId.id+'_H').setAttribute('d', pathFor(120, h%24, 24));\n  document.getElementById(rootId.id+'_M').setAttribute('d', pathFor(80, m%60, 60));\n  document.getElementById(rootId.id+'_S').setAttribute('d', pathFor(40, s%60, 60));\n}\n\nfunction tick(){\n  const now = new Date();\n  const sec = secDay(now);\n  const t = t30State(sec), c = c363State(sec);\n\n  // main text\n  const H=n=>String(n).padStart(2,'0'); EL.clock.textContent = `${H(now.getHours())}:${H(now.getMinutes())}:${H(now.getSeconds())}`;\n  EL.labels.textContent = `Cadran principal (C363 + T30) • Sous-cadrans: heures/minutes/secondes (cascade)`;\n\n  // main activation\n  [...EL.hc.children].forEach((ch,i)=>{ ch.setAttribute('fill', i===c.hIndex ? 'rgba(212,175,55,0.55)' : 'rgba(255,255,255,0.05)'); ch.setAttribute('filter', i===c.hIndex ? 'url(#glowCyan)' : ''); });\n  EL.uc.innerHTML=''; const base=TOP + c.hIndex*(TWO/11), udeg=(TWO/11)/33;\n  for(let u=0;u<33;u++){ const a0=base+u*udeg, a1=a0+udeg*0.88; const p=document.createElementNS('http://www.w3.org/2000/svg','path');\n    p.setAttribute('d', arcPath(500,500, 350-10, 350, a0,a1)); p.setAttribute('fill', u===c.uInHour ? 'var(--b)' : 'rgba(42,70,120,0.5)');\n    if (u===c.uInHour) p.setAttribute('filter','url(#glowCyan)'); EL.uc.appendChild(p); }\n  const end = TOP + (c.uIndex/363)*TWO; EL.day.setAttribute('d', arcPath(500,500, 380,390, TOP, end));\n  const paths = EL.t30.children; for(let i=0;i<paths.length;i++){ const ringIdx=Math.floor(i/30), sIdx=i%30;\n    paths[i].setAttribute('fill', sIdx===t.sector ? (ringIdx===0?'var(--g)':(ringIdx===1?'var(--r)':'var(--b)')) : '#0d1424'); }\n\n  // sub-dials cascade\n  updateSubDial(EL.subG, now.getHours(), now.getMinutes(), now.getSeconds());\n  updateSubDial(EL.subR, now.getHours(), now.getMinutes(), now.getSeconds());\n  updateSubDial(EL.subB, now.getHours(), now.getMinutes(), now.getSeconds());\n\n  // readouts\n  EL.rt.textContent = `T30: Secteur ${t.sector} • Tier ${t.tier} • Pas ${t.step}`;\n  EL.rc.textContent = `C363: hC ${c.hIndex} • uC ${c.uInHour}/33 • uIndex ${c.uIndex}/362`;\n\n  requestAnimationFrame(tick);\n}\nrequestAnimationFrame(tick);\n<\/script>\n<\/body>\n<\/html>\n";
+const ACTIVE={H:11,U:33,S:33,TOTAL:11979};
+const LEGACY={H:11,U:33,S:30,TOTAL:10890};
+const T30={SECTORS:30,SEC:2880};
+const HARMONIES=[133,266,531,664,929,1062,1195,1328,1461];
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+const TWO=Math.PI*2,TOP=-Math.PI/2;
+function toast(t){const x=$("#toast");x.textContent=t;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),1800)}
+function go(id){document.getElementById(id)?.scrollIntoView({behavior:"smooth",block:"start"})} $$("[data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go));
+let mode="active",fam="all";
+function arc(cx,cy,r1,r2,a0,a1){const large=(a1-a0)>Math.PI?1:0;const x1=cx+r1*Math.cos(a0),y1=cy+r1*Math.sin(a0),x2=cx+r2*Math.cos(a0),y2=cy+r2*Math.sin(a0),x3=cx+r2*Math.cos(a1),y3=cy+r2*Math.sin(a1),x4=cx+r1*Math.cos(a1),y4=cy+r1*Math.sin(a1);return `M ${x1} ${y1} L ${x2} ${y2} A ${r2} ${r2} 0 ${large} 1 ${x3} ${y3} L ${x4} ${y4} A ${r1} ${r1} 0 ${large} 0 ${x1} ${y1} Z`}
+function svgEl(n,a={}){const e=document.createElementNS("http://www.w3.org/2000/svg",n);Object.entries(a).forEach(([k,v])=>e.setAttribute(k,v));return e}
+function drawStatic(){
+ const hr=$("#hourRing"),t30=$("#t30Ring"),lab=$("#labelsSvg");hr.innerHTML=t30.innerHTML=lab.innerHTML="";
+ for(let h=0;h<11;h++){let a0=TOP+h*TWO/11,a1=TOP+(h+1)*TWO/11;hr.appendChild(svgEl("path",{d:arc(500,500,405,440,a0,a1),fill:"rgba(255,255,255,.035)",stroke:"rgba(145,201,232,.14)"}));let a=TOP+(h+.5)*TWO/11;let t=svgEl("text",{x:500+458*Math.cos(a),y:500+458*Math.sin(a),"text-anchor":"middle","dominant-baseline":"middle",fill:"#8ca5b9","font-size":"18","font-family":"monospace"});t.textContent=h;lab.appendChild(t)}
+ for(let s=0;s<30;s++){let a0=TOP+s*TWO/30,a1=TOP+(s+1)*TWO/30;t30.appendChild(svgEl("path",{d:arc(500,500,285,305,a0,a1),fill:"#08121f",stroke:"rgba(145,201,232,.10)"}))}
+}
+drawStatic();
+function state(total,secDay){const x=(secDay/86400)*total;const step=Math.floor(x)%total;const perHour=33*(total===ACTIVE.TOTAL?33:30),h=Math.floor(step/perHour),rem=step%perHour,u=Math.floor(rem/(total===ACTIVE.TOTAL?33:30)),s=rem%(total===ACTIVE.TOTAL?33:30);return{step,h,u,s,frac:x-step}}
+function drawDynamic(stA,stL,secDay){
+ const unit=$("#unitRing"),step=$("#stepRing"),t30=$("#t30Ring").children;unit.innerHTML=step.innerHTML="";
+ const st=mode==="legacy"?stL:stA,stepsPerUnit=mode==="legacy"?30:33;
+ const base=TOP+st.h*TWO/11,udeg=(TWO/11)/33;
+ for(let u=0;u<33;u++){let a0=base+u*udeg,a1=a0+udeg*.88;unit.appendChild(svgEl("path",{d:arc(500,500,352,370,a0,a1),fill:u===st.u?(mode==="legacy"?"#ecc96c":"#3ebcff"):"rgba(42,70,120,.35)",filter:u===st.u?"url(#glowC)":""}))}
+ const sdeg=udeg/stepsPerUnit,ubase=base+st.u*udeg;
+ for(let s=0;s<stepsPerUnit;s++){let a0=ubase+s*sdeg,a1=a0+sdeg*.82;step.appendChild(svgEl("path",{d:arc(500,500,320,336,a0,a1),fill:s===st.s?(mode==="legacy"?"#ecc96c":"#ff615c"):"rgba(255,255,255,.055)"}))}
+ const sector=Math.floor(secDay/T30.SEC);[...t30].forEach((p,i)=>p.setAttribute("fill",i===sector?(mode==="t30"?"#4ff0a2":"rgba(79,240,162,.5)"):"#08121f"));
+ $("#centerLabel").textContent=mode==="legacy"?"LEGACY HVU · 11‑33‑30":mode==="compare"?"COMPARAISON · ACTIF / LEGACY":mode==="t30"?"T30 · GÉOMÉTRIE 30 SECTEURS":"TEMPS HVU · 11‑33‑33";
+ if(mode==="compare")$("#centerTime").textContent=`${String(stA.h).padStart(2,"0")}:${String(stA.u).padStart(2,"0")}:${String(stA.s).padStart(2,"0")}`;
+ else if(mode==="t30")$("#centerTime").textContent=`S${String(sector).padStart(2,"0")}`;
+ else $("#centerTime").textContent=`${String(st.h).padStart(2,"0")}:${String(st.u).padStart(2,"0")}:${String(st.s).padStart(2,"0")}`;
+ $("#centerMeta").textContent=mode==="legacy"?"10 890 pas / jour":mode==="compare"?`A ${stA.step} · L ${stL.step} · Δ ${stA.step-stL.step}`:mode==="t30"?"30 secteurs × 48 min civiles":"11 979 pas / jour";
+ $("#triBlue").textContent=`Heure HVU ${stA.h} / 10`;$("#triGreen").textContent=`Unité ${stA.u} / 32`;$("#triRed").textContent=`Pas ${stA.s} / 32`;
+ $("#t30Chip").textContent=`T30 S${sector} · Tier ${Math.floor(sector/10)} · Pas ${sector%10}`;
+}
+$$("[data-mode]").forEach(b=>b.onclick=()=>{mode=b.dataset.mode;$$("[data-mode]").forEach(x=>x.classList.toggle("active",x===b));toast("Mode "+b.textContent.trim())});
+$("#legacyStepDur").textContent=(86400/LEGACY.TOTAL).toFixed(4);$("#activeStepDur").textContent=(86400/ACTIVE.TOTAL).toFixed(4);
+
+function matrixPos(date=new Date()){const raw=localStorage.getItem("hvuMatrixAnchor")||"2026-01-01";$("#anchorDate").value=raw;const a=new Date(raw+"T00:00:00"),d=new Date(date.getFullYear(),date.getMonth(),date.getDate());const days=Math.floor((d-a)/86400000),pos=((days%1461)+1461)%1461+1;return pos}
+function renderMatrix(){const pos=matrixPos(),next=HARMONIES.find(x=>x>=pos)||1461;$("#matrixPosition").textContent="J"+pos;$("#matrixDetail").textContent=`Prochaine Harmonie : H${HARMONIES.indexOf(next)+1} · J${next} · écart ${next-pos} jour(s). Ancrage : ${$("#anchorDate").value}.`;$("#matrixChip").textContent=`M1461 J${pos}`;const g=$("#matrixGrid");g.innerHTML="";for(let y=0;y<4;y++){let col=document.createElement("div");col.className="yearCol";col.innerHTML=`<h4>ANNÉE ${y+1}</h4><div class="dayStrip"></div>`;const strip=col.querySelector(".dayStrip");const start=y===0?1:y*365+1,end=y<3?(y+1)*365:1461;for(let d=start;d<=end;d++){let x=document.createElement("span");x.className="dayDot"+(HARMONIES.includes(d)?" harmony":"")+(d===pos?" today":"");x.title=`J${d}${HARMONIES.includes(d)?" · Harmonie":""}`;strip.appendChild(x)}g.appendChild(col)}}
+$("#saveAnchor").onclick=()=>{localStorage.setItem("hvuMatrixAnchor",$("#anchorDate").value||"2026-01-01");renderMatrix();toast("Ancrage enregistré localement")};
+renderMatrix();
+
+function tick(){const d=new Date(),sec=d.getHours()*3600+d.getMinutes()*60+d.getSeconds()+d.getMilliseconds()/1000,a=state(ACTIVE.TOTAL,sec),l=state(LEGACY.TOTAL,sec);drawDynamic(a,l,sec);$("#civilChip").textContent="Civil "+d.toLocaleTimeString("fr-FR",{hour12:false});requestAnimationFrame(tick)}requestAnimationFrame(tick);
+
+function renderAgents(){const q=$("#agentSearch").value.trim().toLowerCase();const list=AGENTS.filter(a=>(fam==="all"||a.family===fam)&&(!q||JSON.stringify(a).toLowerCase().includes(q)));$("#agentGrid").innerHTML=list.map(a=>`<article class="agent"><div class="n">NŒUD ${String(a.n).padStart(2,"0")} · ${esc(a.code)}</div><h4>${esc(a.name)}</h4><p><b>${esc(a.function)}</b><br>${esc(a.angle)}</p><div class="fam">${esc(a.familyName)}</div></article>`).join("")}$("#agentSearch").oninput=renderAgents;$$("[data-fam]").forEach(b=>b.onclick=()=>{fam=b.dataset.fam;renderAgents()});
+function timeTeam(){const names=["ADAM","COBRA","TOKI","ACTARUS","AYATO","BRUCE","MUSCLOR"];return names.map(n=>AGENTS.find(a=>a.name===n)).filter(Boolean)}$("#routeMission").onclick=()=>{const team=timeTeam();$("#missionOut").textContent="ROUTAGE LOCAL\n\n"+team.map(a=>`${String(a.n).padStart(2,"0")} · ${a.name} — ${a.function}`).join("\n")+"\n\nLe routage sélectionne des rôles ; il ne constitue pas une validation externe.";toast("Équipe temporelle composée")};
+async function health(){try{const r=await fetch((localStorage.getItem("HVU_BRIDGE_URL")||"http://127.0.0.1:8765")+"/health",{cache:"no-store"}),j=await r.json();if(!r.ok)throw new Error(j.detail||j.status||r.status);$("#bridgeLed").className="led ok";$("#bridgeStatus").innerHTML=`<b>Bridge disponible · ${esc(j.mode||"ok")}</b><br><small>${esc(j.provider||"local")} · ${esc(j.model||"")}</small>`;return j}catch(e){$("#bridgeLed").className="led bad";$("#bridgeStatus").innerHTML=`<b>Bridge indisponible</b><br><small>${esc(e.message)}</small>`;return null}}$("#bridgeTest").onclick=health;$("#loadClockMission").onclick=()=>toast("Mission cadran déjà chargée");
+$("#sendMission").onclick=async()=>{const h=await health();if(!h)return;$("#missionOut").textContent="Mission en cours…";try{const r=await fetch((localStorage.getItem("HVU_BRIDGE_URL")||"http://127.0.0.1:8765")+"/api/mission",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({mission:$("#missionText").value,team:timeTeam()})}),j=await r.json();if(!r.ok)throw new Error(j.detail||j.error||("HTTP "+r.status));$("#missionOut").textContent=j.summary||JSON.stringify(j,null,2);toast("Mission terminée")}catch(e){$("#missionOut").textContent="Bridge : "+e.message+"\n\nAucune bascule locale silencieuse.";toast("Mission non exécutée")}};
+$("#sourceSearch").oninput=e=>{const q=e.target.value.trim();let s=esc(SOURCE);if(q){const r=new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),"ig");s=s.replace(r,m=>`<mark>${m}</mark>`)}$("#sourceView").innerHTML=s};$("#copySource").onclick=async()=>{await navigator.clipboard.writeText(SOURCE);toast("Source copiée")};
+function audit(){const checks=[
+["SOURCE-SHA","99ceaebcb15fc99047b0fd09000aae885e31d0205f3fabaa6b71bae183f4eb02".length===64,"SHA-256 source conservé"],
+["ACTIVE-11979",ACTIVE.H*ACTIVE.U*ACTIVE.S===11979,"11×33×33 = 11 979"],
+["LEGACY-10890",LEGACY.H*LEGACY.U*LEGACY.S===10890,"11×33×30 = 10 890"],
+["DELTA-1089",ACTIVE.TOTAL-LEGACY.TOTAL===1089,"Delta = 1 089"],
+["DELTA-33²",ACTIVE.TOTAL-LEGACY.TOTAL===33*33,"1 089 = 33²"],
+["DELTA-10%",Math.abs(ACTIVE.TOTAL/LEGACY.TOTAL-1.1)<1e-12,"Résolution +10 %"],
+["COMMON-363",ACTIVE.H*ACTIVE.U===363&&LEGACY.H*LEGACY.U===363,"Charpente commune = 363"],
+["T30-SEPARATE",T30.SECTORS===30&&T30.SEC===2880,"T30 séparé : 30 × 2 880 s"],
+["MATRIX-1461",363*4+9===1461,"363×4+9 = 1461"],
+["HARMONIES-9",HARMONIES.length===9&&HARMONIES[8]===1461,"9 Harmonies"],
+["AGENTS-30",AGENTS.length===30,"30 nœuds R005"],
+["BRIDGE",!!$("#bridgeTest"),"Bridge R005.1 optionnel"],
+["LEGACY-SOURCE",SOURCE.includes("NUM:10890"),"Moteur v7.1 original conservé"],
+["NO-EXT-JS",![...document.scripts].some(s=>s.src),"Aucune dépendance JS externe"],
+["HUMAN",document.body.innerText.includes("ne constitue pas une validation externe"),"Distinction validation externe"],
+["DOM-IDS",(()=>{const ids=[...document.querySelectorAll("[id]")].map(x=>x.id);return ids.length===new Set(ids).size})(),"Aucun ID dupliqué"]
+];const ok=checks.filter(x=>x[1]).length;$("#auditScore").textContent=`${ok} / ${checks.length}`;$("#auditGrid").innerHTML=checks.map(x=>`<div class="audititem ${x[1]?"pass":"fail"}"><span class="badge ${x[1]?"ok":"bad"}">${x[1]?"PASS":"FAIL"}</span><h3 style="margin:9px 0 4px">${esc(x[0])}</h3><p>${esc(x[2])}</p></div>`).join("")}
+window.addEventListener("scroll",()=>{const d=document.documentElement;$("#progress").style.width=(100*d.scrollTop/(d.scrollHeight-d.clientHeight))+"%";let cur="home";$$("main section[id]").forEach(s=>{if(s.getBoundingClientRect().top<180)cur=s.id});$$("nav button").forEach(b=>b.classList.toggle("active",b.dataset.go===cur))},{passive:true});
+renderAgents();audit();
+</script>
+
+<a id="hvuIOSHome" href="index.html" aria-label="Retour au Hub iOS">← HUB iOS</a>
+<script id="hvuIOSBridgeInit">
+document.addEventListener("DOMContentLoaded",function(){
+  const base=localStorage.getItem("HVU_BRIDGE_URL")||"";
+  const el=document.getElementById("agxBridgeUrl");
+  if(el && base){ el.value=base.replace(/\/$/,"")+"/api/mission"; }
+});
+</script>
+
+</body>
+</html>

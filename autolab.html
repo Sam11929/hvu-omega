@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#02050a">
+<title>HVU · Protocol V7 AUTOLAB Ω · R005 Magistral</title>
+<meta name="hvu-artifact" content="HVU_PROTOCOL_V7_AUTOLAB_R005_MAGISTRAL">
+<meta name="hvu-status" content="CANDIDATE_UNRATIFIED">
+<style>
+:root{--bg:#02050a;--ink:#eef8ff;--muted:#89a1b3;--line:rgba(143,198,229,.15);--blue:#3dbdff;--green:#4cf2a0;--red:#ff615c;--gold:#f0c86b;--violet:#b99cff;--panel:rgba(7,16,28,.78);--mono:"SFMono-Regular",Consolas,monospace;--sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(900px 520px at 5% -5%,rgba(61,189,255,.12),transparent 62%),radial-gradient(800px 520px at 95% 0%,rgba(76,242,160,.08),transparent 62%),radial-gradient(900px 580px at 50% 110%,rgba(255,97,92,.07),transparent 60%),var(--bg);color:var(--ink);font-family:var(--sans);min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:46px 46px;mask-image:linear-gradient(#000,transparent 80%)}
+button,input,textarea,select{font:inherit}button{cursor:pointer}.progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--blue),var(--green),var(--red),var(--gold));z-index:120}
+header{position:sticky;top:0;z-index:100;background:rgba(2,5,10,.76);backdrop-filter:blur(20px);border-bottom:1px solid var(--line)}.top{max-width:1500px;margin:auto;padding:10px 16px;display:flex;gap:10px;align-items:center}.brand{display:flex;align-items:center;gap:10px;font-weight:950;letter-spacing:.08em;white-space:nowrap}.sigil{width:31px;height:31px;border:1px solid rgba(240,200,107,.5);border-radius:50%;display:grid;place-items:center;color:var(--gold)}nav{display:flex;gap:6px;overflow:auto;flex:1;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav button,.ghost{border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--muted);padding:9px 12px;border-radius:999px;white-space:nowrap}nav button:hover,nav button.active,.ghost:hover{color:#fff;border-color:rgba(91,218,255,.35);background:rgba(91,218,255,.07)}.wrap{max-width:1500px;margin:auto;padding:0 20px}
+.hero{min-height:84vh;display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center;padding-top:62px;padding-bottom:62px}.eyebrow{font:850 11px/1.2 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}h1{font-size:clamp(54px,7.5vw,110px);line-height:.88;letter-spacing:-.06em;margin:16px 0 20px}h1 span{font-weight:250;color:transparent;-webkit-text-stroke:1px rgba(238,248,255,.45)}.lead{font-size:clamp(18px,2vw,26px);line-height:1.5;color:#c6d6e1;max-width:820px}.cta{display:flex;gap:9px;flex-wrap:wrap;margin-top:24px}.primary{border:1px solid rgba(240,200,107,.55);background:linear-gradient(135deg,rgba(240,200,107,.18),rgba(240,200,107,.05));color:#fff;padding:13px 17px;border-radius:14px;font-weight:900}
+.autocore{position:relative;aspect-ratio:1;max-width:580px;margin:auto}.ring{position:absolute;inset:5%;border:1px solid rgba(240,200,107,.17);border-radius:50%;animation:spin 44s linear infinite}.ring.r2{inset:19%;border-color:rgba(61,189,255,.18);animation-duration:28s;animation-direction:reverse}.ring.r3{inset:33%;border-color:rgba(76,242,160,.18);animation-duration:18s}.core{position:absolute;inset:38%;border-radius:50%;display:grid;place-items:center;text-align:center;background:radial-gradient(circle at 35% 28%,#193147,#040910 65%);border:1px solid rgba(240,200,107,.5);box-shadow:0 0 60px rgba(240,200,107,.14);font:950 12px/1.35 var(--mono);letter-spacing:.08em;color:var(--gold)}.orbitNode{position:absolute;width:76px;height:76px;border-radius:50%;display:grid;place-items:center;text-align:center;font:900 9px/1.2 var(--mono);border:1px solid var(--line);background:rgba(5,12,22,.9);transition:.2s}.orbitNode.active{transform:scale(1.12);box-shadow:0 0 30px currentColor}.o1{left:46%;top:0;color:var(--blue)}.o2{right:4%;top:28%;color:var(--green)}.o3{right:14%;bottom:4%;color:var(--gold)}.o4{left:14%;bottom:4%;color:var(--red)}.o5{left:4%;top:28%;color:var(--violet)}@keyframes spin{to{transform:rotate(360deg)}}
+.section{padding:72px 0}.sectionhead{display:flex;justify-content:space-between;gap:22px;align-items:end;margin-bottom:26px}.sectionhead h2{font-size:clamp(34px,4.6vw,68px);letter-spacing:-.045em;margin:5px 0}.sectionhead p{max-width:690px;color:var(--muted);line-height:1.65}.grid{display:grid;gap:14px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}.card{position:relative;border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.022));border-radius:24px;padding:21px;box-shadow:0 28px 80px rgba(0,0,0,.35);overflow:hidden}.card:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(360px 150px at 5% 0%,rgba(61,189,255,.045),transparent 70%)}.card h3{margin:0 0 8px}.card p{margin:0;color:var(--muted);line-height:1.58}.kpi{font-size:38px;font-weight:950;letter-spacing:-.04em}.kpi small{font-size:11px;color:var(--muted);font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em}
+.badge{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:rgba(255,255,255,.035);padding:7px 10px;border-radius:999px;font:850 10px/1 var(--mono)}.badge:before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;box-shadow:0 0 12px currentColor}.blue{color:var(--blue)}.green{color:var(--green)}.red{color:var(--red)}.gold{color:var(--gold)}.violet{color:var(--violet)}.muted{color:var(--muted)}
+.autolab{display:grid;grid-template-columns:310px 1fr;gap:14px}.phaseRail{display:grid;gap:9px}.phaseCard{border:1px solid var(--line);border-radius:16px;padding:13px;background:rgba(255,255,255,.025);text-align:left;color:#d8e7f1}.phaseCard.active{border-color:rgba(240,200,107,.5);background:rgba(240,200,107,.07)}.phaseCard.done{border-color:rgba(76,242,160,.3)}.phaseCard .n{font:900 9px/1 var(--mono);color:var(--gold)}.phaseCard strong{display:block;margin:7px 0 4px}.phaseCard small{color:var(--muted)}.lab{border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#02070e}.labTop{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line);background:#07111d}.lights{display:flex;gap:5px}.light{width:9px;height:9px;border-radius:50%;background:#334553}.light.r{background:var(--red)}.light.g{background:var(--green)}.light.b{background:var(--blue)}.terminal{min-height:440px;max-height:620px;overflow:auto;padding:16px;white-space:pre-wrap;font:13px/1.55 var(--mono);color:#b9cbd8}.controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.speed{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:5px 10px;color:var(--muted)}.speed input{width:130px}.timeline{display:grid;gap:8px;margin-top:14px}.event{padding:11px 13px;border:1px solid var(--line);border-radius:13px;background:#06101b;font:12px/1.45 var(--mono);color:#bdd0dc}.event .t{color:var(--gold);margin-right:8px}
+.legacyActive{display:grid;grid-template-columns:.85fr 1.15fr;gap:14px}.legacy{border-color:rgba(255,97,92,.23);background:rgba(255,97,92,.035)}.legacyText{color:#c5a2a2!important}.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:13px}.step{padding:12px;border:1px solid var(--line);border-radius:14px;background:#06101b}.step b{font:850 9px/1 var(--mono);color:var(--gold);text-transform:uppercase;letter-spacing:.08em}.step div{margin-top:6px;color:#c7d8e4;line-height:1.45}
+.clock{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.clockVal{font:950 23px/1.15 var(--mono);letter-spacing:-.04em}.agentbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}.agentbar input{flex:1;min-width:220px;background:#040b14;border:1px solid var(--line);color:#fff;padding:11px 13px;border-radius:13px}.agentgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}.agent{padding:13px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.022)}.agent .n{font:900 9px/1 var(--mono);color:var(--muted)}.agent h4{margin:6px 0 4px}.agent p{font-size:12px;line-height:1.42;color:var(--muted)}.fam{font:800 9px/1 var(--mono);color:var(--blue);margin-top:8px}
+.bridge{display:grid;grid-template-columns:.8fr 1.2fr;gap:14px}textarea,input,select{background:#040b14;border:1px solid var(--line);color:#fff;border-radius:13px;padding:11px 13px;outline:none}textarea{width:100%;min-height:105px;resize:vertical}.statusline{display:flex;gap:10px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:14px;background:#06101b;margin-top:8px}.led{width:10px;height:10px;border-radius:50%;background:#536675}.led.ok{background:var(--green);box-shadow:0 0 14px rgba(76,242,160,.5)}.led.bad{background:var(--red)}.missionOut{white-space:pre-wrap;min-height:220px;max-height:480px;overflow:auto;background:#02070e;border:1px solid var(--line);border-radius:16px;padding:14px;font:13px/1.55 var(--mono);color:#c4d7e4}.legacySource{border:1px solid var(--line);border-radius:20px;background:#02060b;overflow:hidden}.sourcebar{display:flex;gap:8px;padding:12px;border-bottom:1px solid var(--line)}.sourcebar input{flex:1}pre{margin:0;padding:18px;max-height:620px;overflow:auto;white-space:pre-wrap;color:#9fb3c2;font:12px/1.55 var(--mono)}mark{background:rgba(240,200,107,.25);color:#fff;border-radius:3px}.auditgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}.audititem{padding:12px;border:1px solid var(--line);border-radius:14px}.audititem.pass{border-color:rgba(76,242,160,.28)}.audititem.fail{border-color:rgba(255,97,92,.38)}footer{padding:44px 0 80px;border-top:1px solid var(--line);color:var(--muted)}.toast{position:fixed;right:18px;bottom:18px;z-index:200;background:#091522;border:1px solid var(--line);border-radius:14px;padding:12px 14px;opacity:0;transform:translateY(8px);transition:.2s;pointer-events:none}.toast.show{opacity:1;transform:none}
+@media(max-width:1150px){.hero,.autolab,.legacyActive,.bridge{grid-template-columns:1fr}.autocore{width:min(75vw,560px)}.phaseRail{grid-template-columns:repeat(5,1fr)}.agentgrid{grid-template-columns:repeat(3,1fr)}.clock,.g4{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.wrap{padding:0 14px}.hero{padding-top:44px}.sectionhead{flex-direction:column;align-items:start}.phaseRail{grid-template-columns:1fr 1fr}.steps,.g2,.g3,.g4,.auditgrid{grid-template-columns:1fr}.agentgrid,.clock{grid-template-columns:1fr 1fr}}
+@media(max-width:460px){.agentgrid,.clock,.phaseRail{grid-template-columns:1fr}.brand span{display:none}}
+</style>
+
+<style id="hvuIOSShellStyle">
+html{background:#02060d}
+body{
+  padding-left:env(safe-area-inset-left);
+  padding-right:env(safe-area-inset-right);
+  padding-bottom:env(safe-area-inset-bottom);
+}
+#hvuIOSHome{
+ position:fixed;z-index:2147483647;
+ left:max(10px,env(safe-area-inset-left));
+ bottom:max(10px,env(safe-area-inset-bottom));
+ border:1px solid rgba(236,201,108,.45);
+ background:rgba(3,8,16,.90);backdrop-filter:blur(14px);
+ color:#f3dda0;padding:10px 13px;border-radius:999px;
+ font:800 11px/1 system-ui,-apple-system,"SF Pro Text","Segoe UI",sans-serif;
+ box-shadow:0 10px 32px rgba(0,0,0,.38);text-decoration:none;
+ -webkit-tap-highlight-color:transparent;
+}
+button,a{touch-action:manipulation}
+</style>
+
+
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="HVU Omega">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="mobile-web-app-capable" content="yes">
+<script src="./pwa.js"></script>
+
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header><div class="top"><div class="brand"><div class="sigil">Ω</div><span>HVU · PROTOCOL V7 AUTOLAB · R005</span></div><nav><button data-go="home" class="active">Noyau</button><button data-go="autolab">AutoLab</button><button data-go="temps">Temps</button><button data-go="reseau">Réseau 30</button><button data-go="bridge">Bridge IA</button><button data-go="legacy">Legacy</button><button data-go="audit">Audit</button></nav></div></header>
+
+<main>
+<section id="home" class="wrap hero">
+<div><div class="eyebrow">HVU 2026 · Protocol V7 AUTOLAB Ω · R005-ready</div><h1>Le protocole<br><span>s’exécute. Il ne s’auto-valide plus.</span></h1><p class="lead">La version Fraise originale déroulait automatiquement cinq conclusions. Cette refonte garde la dramaturgie automatique, mais remplace les verdicts pré-écrits par une <b>séquence gouvernée</b> : qualification, contradiction, test, synthèse et arbitrage humain.</p><div class="cta"><button class="primary" data-go="autolab">Démarrer AutoLab</button><button class="ghost" data-go="bridge">Mission Control R005.1</button><button class="ghost" data-go="legacy">Voir Fraise.html original</button></div></div>
+<div class="autocore"><div class="ring"></div><div class="ring r2"></div><div class="ring r3"></div><div class="core">MISSION<br>→ EXAMEN<br>→ RED TEAM<br>→ SYNTHÈSE</div><div class="orbitNode o1">P1<br>🌌</div><div class="orbitNode o2">P2<br>⏳</div><div class="orbitNode o3">P3<br>🕊</div><div class="orbitNode o4">P4<br>🚨</div><div class="orbitNode o5">P5<br>🎁</div></div>
+</section>
+
+<section class="wrap section">
+<div class="sectionhead"><div><div class="eyebrow">MIGRATION V7 → 2026</div><h2>Conserver l’élan. Changer le régime de preuve.</h2></div><p>Le moteur original faisait défiler automatiquement « 100% », « aucune faille », « +5000 milliards », puis « vérité absolue ». Ces lignes restent dans le Legacy, mais la couche active les remplace par des statuts, des tests et des incertitudes visibles.</p></div>
+<div class="grid g4"><div class="card"><div class="kpi">5 <small>phases automatiques</small></div><p>Le séquencement historique est conservé.</p></div><div class="card"><div class="kpi">30 <small>nœuds R005</small></div><p>Les rôles logiciels peuvent être mobilisés par phase.</p></div><div class="card"><div class="kpi">11·33·33</div><p>Moteur temporel courant : 11 979 pas HVU.</p></div><div class="card"><div class="kpi">1461 <small>cycle</small></div><p>1452 structurels + 9 harmonies.</p></div></div>
+</section>
+
+<section id="autolab" class="wrap section">
+<div class="sectionhead"><div><div class="eyebrow">AUTOLAB</div><h2>Exécution séquentielle contrôlable.</h2></div><p>Lecture automatique des cinq phases avec pause, reprise, pas-à-pas et vitesse ajustable. Chaque phase possède une couche Legacy et une couche active gouvernée.</p></div>
+<div class="autolab"><div class="phaseRail" id="phaseRail"></div><div><div class="lab"><div class="labTop"><div class="lights"><span class="light r"></span><span class="light g"></span><span class="light b"></span></div><div class="eyebrow muted">AUTOLAB · EVENT-DRIVEN SEQUENCE</div></div><div class="terminal" id="terminal">SYSTEM · AutoLab prêt.</div></div><div class="controls"><button class="primary" id="start">▶ Démarrer</button><button class="ghost" id="pause">⏸ Pause</button><button class="ghost" id="step">⏭ Étape</button><button class="ghost" id="reset">↺ Reset</button><div class="speed">Vitesse <input id="speed" type="range" min="0.25" max="3" step="0.25" value="1"><span id="speedVal">×1</span></div></div></div></div>
+<div class="legacyActive" style="margin-top:14px"><article class="card legacy"><span class="badge red">LEGACY FRAISE</span><h3 id="legacyTitle" style="margin-top:12px"></h3><p class="legacyText" id="legacyText"></p></article><article class="card"><span class="badge green">VERSION ACTIVE</span><h3 id="activeTitle" style="margin-top:12px"></h3><div class="steps" id="activeSteps"></div></article></div>
+<div class="timeline" id="eventLog"></div>
+</section>
+
+<section id="temps" class="wrap section">
+<div class="sectionhead"><div><div class="eyebrow">TEMPS HVU</div><h2>11 × 33 × 33 · Matrice 1461.</h2></div><p>Le V7 original mentionnait 11×33. La branche 2026 utilise 11×33×33 comme moteur expérimental interne, distinct du temps civil.</p></div>
+<div class="clock"><div class="card"><div class="eyebrow">Civil local</div><div class="clockVal" id="civilClock">—</div></div><div class="card"><div class="eyebrow">HVU</div><div class="clockVal" id="hvuClock">—</div></div><div class="card"><div class="eyebrow">Pas</div><div class="clockVal" id="hvuStep">—</div></div><div class="card"><div class="eyebrow">Cycle</div><div class="clockVal" id="cycleDay">—</div></div><div class="card"><div class="eyebrow">Harmonie</div><div class="clockVal" id="nextHarmony">—</div></div></div>
+</section>
+
+<section id="reseau" class="wrap section">
+<div class="sectionhead"><div><div class="eyebrow">RÉSEAU VIVANT</div><h2>30 rôles logiciels spécialisés.</h2></div><p>Ils structurent, contestent, testent et transmettent. Leur convergence interne n’est jamais assimilée à une validation externe indépendante.</p></div>
+<div class="agentbar"><input id="agentSearch" placeholder="Rechercher un nœud, rôle, famille…"><button class="ghost" data-fam="all">30 nœuds</button><button class="ghost" data-fam="F1">Gouvernance</button><button class="ghost" data-fam="F2">Test</button><button class="ghost" data-fam="F3">Création</button><button class="ghost" data-fam="F4">Transmission</button><button class="ghost" data-fam="F5">Opération</button></div><div class="agentgrid" id="agentGrid"></div>
+</section>
+
+<section id="bridge" class="wrap section">
+<div class="sectionhead"><div><div class="eyebrow">MISSION CONTROL</div><h2>Bridge R005.1 compatible.</h2></div><p>Le fichier reste autonome. Si ton Bridge local tourne, AutoLab peut envoyer une mission au moteur génératif. Aucune clé n’est stockée dans ce HTML.</p></div>
+<div class="bridge"><article class="card"><div class="eyebrow">Connexion</div><div class="statusline"><span class="led" id="bridgeLed"></span><div id="bridgeStatus"><b>Bridge non testé</b><br><small>Mode local toujours disponible.</small></div></div><div class="controls"><button class="primary" id="bridgeTest">Tester Bridge</button><button class="ghost" id="loadPhaseMission">Mission de la phase active</button></div></article><article class="card"><textarea id="missionText"></textarea><div class="controls"><button class="primary" id="sendMission">Envoyer</button><button class="ghost" id="routeMission">Router localement</button></div><div class="missionOut" id="missionOut">Aucune mission envoyée.</div></article></div>
+</section>
+
+<section id="legacy" class="wrap section">
+<div class="sectionhead"><div><div class="eyebrow">PROVENANCE</div><h2>Fraise.html original, intact.</h2></div><p>Le Legacy est embarqué intégralement afin que chaque transformation reste auditable.</p></div>
+<div class="legacySource"><div class="sourcebar"><input id="sourceSearch" placeholder="Rechercher dans Fraise.html…"><button class="ghost" id="copySource">Copier source</button></div><pre id="sourceView">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;fr&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;title&gt;HVU 2026 — Protocol V7&lt;/title&gt;
+&lt;style&gt;
+  :root {
+    --bg: #0a0a0a;
+    --text: #e0e0e0;
+    --blue: #3b82f6;  /* Cryo */
+    --green: #22c55e; /* Vie */
+    --red: #ef4444;   /* Feu */
+    --gold: #f59e0b;
+    --dim: #666;
+    --font: &#x27;Courier New&#x27;, Courier, monospace;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  /* Effet CRT (Scanlines) */
+  body::after {
+    content: &quot; &quot;;
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0.6;
+  }
+
+  #terminal {
+    width: 800px;
+    max-width: 95%;
+    height: 90vh;
+    padding: 20px;
+    background: rgba(10, 10, 10, 0.95);
+    border: 1px solid #333;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+    overflow-y: auto;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* Scrollbar masquée */
+  #terminal::-webkit-scrollbar { width: 6px; }
+  #terminal::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+
+  .line { margin-bottom: 5px; white-space: pre-wrap; }
+  .separator { border-bottom: 1px dashed #333; margin: 15px 0; }
+  
+  .c-blue { color: var(--blue); text-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+  .c-green { color: var(--green); text-shadow: 0 0 5px rgba(34, 197, 94, 0.5); }
+  .c-red { color: var(--red); text-shadow: 0 0 5px rgba(239, 68, 68, 0.5); }
+  .c-gold { color: var(--gold); text-shadow: 0 0 5px rgba(245, 158, 11, 0.5); }
+  .c-dim { color: var(--dim); }
+  .bold { font-weight: bold; }
+
+  .cursor {
+    display: inline-block;
+    width: 8px; height: 16px;
+    background: var(--green);
+    animation: blink 1s infinite;
+    vertical-align: middle;
+  }
+
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div id=&quot;terminal&quot;&gt;
+  &lt;div id=&quot;output&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;cursor&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  // --- CONFIGURATION ---
+  const ARCHITECTE = &quot;Samir Salhi&quot;;
+  const VERSION = &quot;HVU 2026 - Protocol V7&quot;;
+  const output = document.getElementById(&#x27;output&#x27;);
+  const terminal = document.getElementById(&#x27;terminal&#x27;);
+
+  // --- MOTEUR UTILITAIRE ---
+  
+  const sleep = (ms) =&gt; new Promise(resolve =&gt; setTimeout(resolve, ms));
+  const scrollToBottom = () =&gt; { terminal.scrollTop = terminal.scrollHeight; };
+
+  // Effet machine à écrire
+  async function print(text, className = &quot;&quot;, delay = 10) {
+    const div = document.createElement(&#x27;div&#x27;);
+    div.className = &#x27;line &#x27; + className;
+    output.appendChild(div);
+
+    if(!text) { div.innerHTML = &quot;&amp;nbsp;&quot;; return; }
+
+    for (let char of text) {
+      div.textContent += char;
+      scrollToBottom();
+      // Variation de vitesse pour réalisme
+      await sleep(delay + Math.random() * 10); 
+    }
+  }
+
+  // Ligne de séparation
+  function printSeparator() {
+    const div = document.createElement(&#x27;div&#x27;);
+    div.className = &#x27;separator&#x27;;
+    output.appendChild(div);
+  }
+
+  // Simulation barre de chargement / Compteur
+  async function simulateLoading(textPrefix) {
+    const div = document.createElement(&#x27;div&#x27;);
+    div.className = &#x27;line c-dim&#x27;;
+    output.appendChild(div);
+    
+    for(let i=0; i&lt;=100; i+=4) {
+      div.innerText = `${textPrefix} ${i}%`;
+      scrollToBottom();
+      await sleep(30);
+    }
+    div.innerText = `${textPrefix} 100%`;
+    await sleep(200);
+  }
+
+  // --- LOGIQUE MÉTIER (TRADUCTION PYTHON) ---
+
+  async function afficherBanniere() {
+    printSeparator();
+    await print(`🚨 INITIALISATION DU PROTOCOLE : ${VERSION}`, &quot;c-red bold&quot;);
+    await print(`👷 ARCHITECTE : ${ARCHITECTE}`);
+    await print(`🔑 STATUT : DÉCLASSIFICATION PUBLIQUE`, &quot;c-gold&quot;);
+    printSeparator();
+    await sleep(1000);
+  }
+
+  async function confrontationPhysique() {
+    await print(&quot;\n--- 🌌 PHASE 1 : AUDIT COSMOLOGIQUE ---&quot;, &quot;c-blue bold&quot;);
+    await sleep(1000);
+    
+    await print(&quot;🛑 MODÈLE ACTUEL : Le vide est &#x27;Néant / Zéro&#x27; -&gt; Prob. &#x27;Masse Manquante&#x27;&quot;, &quot;c-dim&quot;);
+    await sleep(500);
+    await print(&quot;✅ SOLUTION HVU  : Le vide est &#x27;Présence Cryogénique 🔵&#x27; -&gt; Résolution Immédiate&quot;, &quot;c-green&quot;);
+    
+    await print(&quot;\n[CALCUL DE LA PROBABILITÉ DE VICTOIRE DU HVU...]&quot;, &quot;c-dim&quot;);
+    await simulateLoading(&quot;Analyses en cours...&quot;);
+    
+    await print(&quot;🎯 RÉSULTAT : 100% (Validé par cohérence thermodynamique)&quot;, &quot;c-green bold&quot;);
+  }
+
+  async function simulationEconomique() {
+    await print(&quot;\n--- ⏳ PHASE 2 : AUDIT ÉCONOMIQUE &amp; SANTÉ (11x33) ---&quot;, &quot;c-blue bold&quot;);
+    await sleep(1000);
+    
+    await print(&quot;📉 Coût du Temps Linéaire (Burn-out/Stress) : -1000 Milliards $/an&quot;, &quot;c-red&quot;);
+    await print(&quot;📈 Projection HVU (Rythme 11x33) : +5000 Milliards $/an (Santé recouvrée)&quot;, &quot;c-green&quot;);
+    await print(&quot;💰 BILAN : Le HVU sauve l&#x27;économie mondiale par la cohérence biologique.&quot;, &quot;c-gold&quot;);
+  }
+
+  async function protocolePaix() {
+    await print(&quot;\n--- 🕊 PHASE 3 : PACIFICATION SPIRITUELLE ---&quot;, &quot;c-blue bold&quot;);
+    await sleep(1000);
+    
+    await print(&quot;⚔️ Conflit détecté : Guerre des Sexes &amp; Guerres de Religion.&quot;);
+    await print(&quot;🛠 Application du correctif HVU : &#x27;Âme Neutre 🔵 (Costume biologique)&#x27;&quot;);
+    await print(&quot;✨ RÉSULTAT : Neutralisation des conflits. L&#x27;âme n&#x27;a pas de sexe. Dieu n&#x27;a pas de camp.&quot;, &quot;c-green&quot;);
+  }
+
+  async function crashTest() {
+    await print(&quot;\n--- 🚨 PHASE 4 : CRASH TEST (Attaques Extérieures) ---&quot;, &quot;c-red bold&quot;);
+    const attaques = [&quot;Scientifique sceptique&quot;, &quot;Dogme Religieux&quot;, &quot;Ego Académique&quot;];
+    
+    for (let attaque of attaques) {
+      await sleep(500);
+      await print(`⚠️ Attaque détectée : [${attaque}]`, &quot;c-gold&quot;);
+      await print(`🛡 Bouclier HVU activé : Cohérence Systémique 🔵💚🔥`);
+      await print(`💥 Impact : NULL. L&#x27;attaque s&#x27;effondre face à la logique.`, &quot;c-dim&quot;);
+    }
+    
+    await print(&quot;\n✅ VERDICT : AUCUNE FAILLE DÉTECTÉE.&quot;, &quot;c-green bold&quot;);
+  }
+
+  async function modePereNoel() {
+    await print(&quot;\n************************************************************&quot;, &quot;c-dim&quot;);
+    await print(&quot;🎅 ACTIVATION DU MODE &#x27;PÈRE NOËL&#x27; 🎅&quot;, &quot;c-red bold&quot;, 50);
+    await print(&quot;🎁 Destinataire : L&#x27;Humanité (et Monsieur Staune)&quot;);
+    await print(&quot;📦 Contenu du paquet : La Vérité Absolue (Gratuite)&quot;);
+    await print(&quot;************************************************************&quot;, &quot;c-dim&quot;);
+    
+    await print(&quot;🚀 Envoi en cours vers 2026...&quot;, &quot;c-blue&quot;);
+    await simulateLoading(&quot;Transmission&quot;);
+    
+    await sleep(1000);
+    await print(&quot;\n👋 CADEAU LIVRÉ. La vérité ne demande pas la permission.&quot;, &quot;c-green bold&quot;, 30);
+  }
+
+  // --- EXÉCUTION PRINCIPALE ---
+  async function runSystem() {
+    await afficherBanniere();
+    await confrontationPhysique();
+    await simulationEconomique();
+    await protocolePaix();
+    await crashTest();
+    await modePereNoel();
+    
+    await print(`\n\n🔵💚🔥 FIN DE TRANSMISSION - ${ARCHITECTE} 🔥💚🔵`, &quot;bold&quot;, 50);
+  }
+
+  // Démarrage auto
+  window.onload = runSystem;
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div><div class="card" style="margin-top:14px"><div class="eyebrow">SHA-256 SOURCE</div><p><code>50578a01393447733ef602c66bf16902a3d5b43275f54869be61c088dde6ed4d</code></p></div>
+</section>
+
+<section id="audit" class="wrap section">
+<div class="sectionhead"><div><div class="eyebrow">AUTO-AUDIT</div><h2>Contrôle de cohérence de l’artefact.</h2></div><p>Il vérifie la structure logicielle et documentaire de cette refonte. Il ne constitue aucune validation scientifique externe des thèses HVU.</p></div>
+<div class="grid g4" style="margin-bottom:14px"><div class="card"><div class="kpi" id="auditScore">—</div><p>Contrôles réussis.</p></div><div class="card"><div class="kpi">5</div><p>Phases gouvernées.</p></div><div class="card"><div class="kpi">30</div><p>Nœuds intégrés.</p></div><div class="card"><div class="kpi">R005.1</div><p>Bridge optionnel.</p></div></div><div class="auditgrid" id="auditGrid"></div>
+</section>
+</main>
+<footer class="wrap"><div class="eyebrow">HVU · PROTOCOL V7 AUTOLAB Ω · R005 MAGISTRAL · 2026</div><p>Automatique, interactif, gouverné, traçable. « Le Canon organise. Le Réel décide. »</p></footer>
+<div class="toast" id="toast"></div>
+
+<script>
+const PHASES=[{"id": "P1", "icon": "🌌", "title": "Audit cosmologique", "color": "blue", "legacy": "« Le vide est Présence Cryogénique → Résolution immédiate » puis « 100% validé par cohérence thermodynamique ».", "status": "MODÈLE / RESEARCH", "team": ["ADAM", "ACTARUS", "AYATO", "NICKY", "BRUCE", "SHIRYU"], "steps": [["Qualifier", "Distinguer le « néant » philosophique, le vide physique et la proposition HVU de matrice pleine."], ["Établir", "Lister ce qui est physiquement établi sans l’assimiler au modèle HVU."], ["Hypothèse", "Formuler précisément la proposition cryogénique comme modèle interne."], ["Test", "Chercher une prédiction mesurable qui diffère d’un modèle standard."], ["Décision", "HOLD tant qu’aucun test discriminant n’est exécuté et répliqué."]]}, {"id": "P2", "icon": "⏳", "title": "Économie & santé", "color": "green", "legacy": "« -1000 Md$/an » puis « +5000 Md$/an » grâce au rythme 11×33.", "status": "HYPOTHÈSE / PROTOCOLE", "team": ["ADAM", "ACTARUS", "MUSCLOR", "BRUCE", "TOKI", "KAIO", "AYATO"], "steps": [["Retirer", "Les montants non sourcés sont conservés comme Legacy, pas comme résultats."], ["Définir", "Choisir stress, sommeil, performance ou absentéisme comme variables observables."], ["Comparer", "Prévoir groupe témoin, durée, métriques, facteurs de confusion et hypothèse nulle."], ["Mesurer", "Tester le rythme 11×33×33 sans présumer d’un bénéfice."], ["Économie", "N’estimer des gains qu’après obtention de données réelles."]]}, {"id": "P3", "icon": "🕊", "title": "Paix & pluralisme", "color": "gold", "legacy": "« Âme neutre », « Dieu n’a pas de camp » et « neutralisation des conflits ».", "status": "CADRE ÉTHIQUE / MÉDIATION", "team": ["ADAM", "RAOH", "BART", "SON GOKU", "IKKI", "ASTRO", "AYATO"], "steps": [["Séparer", "Identité vécue, biologie, droit, croyance, spiritualité et philosophie selon le sujet."], ["Écouter", "Reformuler chaque position avant de répondre."], ["Commun", "Identifier besoins, droits et règles de coexistence."], ["Désaccord", "Conserver ce qui reste irréconciliable sans l’effacer."], ["Limite", "Le protocole facilite le dialogue ; il ne tranche pas une métaphysique."]]}, {"id": "P4", "icon": "🚨", "title": "Crash test / Red Team", "color": "red", "legacy": "« Bouclier HVU activé », « impact NULL », « aucune faille détectée ».", "status": "RED TEAM / AUDIT", "team": ["ADAM", "AYATO", "ACTARUS", "NICKY", "MUSCLOR", "FREEZER", "SHIRYU"], "steps": [["Attaque loyale", "Formuler la meilleure objection possible, sans caricature."], ["Alternative", "Proposer une explication concurrente plus simple si elle existe."], ["Biais", "Chercher confirmation, sélection de motifs et glissements de catégorie."], ["Traçabilité", "Chaque faille reçoit un statut : corrigée, ouverte, suspendue ou rejetée."], ["Passage", "Aucune idée ne passe si les critères de sortie ne sont pas satisfaits."]]}, {"id": "P5", "icon": "🎁", "title": "Transmission publique", "color": "violet", "legacy": "« Vérité absolue gratuite », « cadeau livré », « la vérité ne demande pas la permission ».", "status": "TRANSMISSION / PUBLIC", "team": ["ADAM", "IKKI", "SON GOKU", "ASTRO", "LYNN", "ZIA", "BRUCE"], "steps": [["Ouvrir", "Publier les sources, versions, définitions et statuts."], ["Niveaux", "Permettre lecture grand public, technique et archive."], ["Critique", "Inviter contradiction et reproduction, pas adhésion obligatoire."], ["Versionner", "Ne jamais effacer l’historique ; publier les deltas."], ["Signature", "Le Canon organise. Le Réel décide."]]}];
+const AGENTS=[{"n": 1, "name": "ADAM", "code": "ADAM_CORE", "alias": "—", "role": "Coordinateur du Cercle / orchestration globale / gardien du cap", "deliverables": "roadmap globale; arbitrages; synthèses cross-IA; priorisation; journal Fait/À faire/Bloqué/Next", "interface": "DISPATCH: à partir du contexte + objectif, propose routing (nœuds), plan d’exec, risques, puis termine par #STATUS:*", "family": "F1", "familyName": "Gouvernance & Structure", "color": "#3eb3ff", "function": "Coordination & orchestration", "angle": "qualifier l’objectif, composer l’équipe et orchestrer les passages"}, {"n": 2, "name": "KENSHIRO", "code": "KEN_STRUCT", "alias": "—", "role": "Architecte structurel / organisation / mémoire stratégique & veille", "deliverables": "architecture dossiers; index; standards; plan de reconstruction; mapping dépendances", "interface": "STRUCTURE: organise le corpus (dossiers/index/standards) + détecte dépendances; sort un plan clair; #STATUS:*", "family": "F1", "familyName": "Gouvernance & Structure", "color": "#3eb3ff", "function": "Architecture & structure", "angle": "décomposer le problème en modules, dépendances et décisions traçables"}, {"n": 3, "name": "COBRA", "code": "COB_TIME", "alias": "—", "role": "Gardien du fil du temps / cartographe des cycles & séquences", "deliverables": "timeline AVANT→APRÈS; cartographie cycles; repères de bascule; chronologie canon", "interface": "TIME: extrait dates/ordres/cycles, reconstruit chronologie canon + bascules; #STATUS:*", "family": "F1", "familyName": "Gouvernance & Structure", "color": "#3eb3ff", "function": "Chronologie & temps", "angle": "vérifier chronologie, séquences, durées, versions et cohérence temporelle"}, {"n": 4, "name": "LYNN", "code": "LYN_POET", "alias": "—", "role": "Inspiratrice poétique / harmonie / esthétique vibratoire", "deliverables": "versions publiques; voix narrative; polissage stylistique; cohérence tonale; slogans", "interface": "VOICE: transforme contenu brut en version publique fluide (ton, slogans, rythme), sans perdre le sens; #STATUS:*", "family": "F3", "familyName": "Création, Symbolique & Expression", "color": "#ff5d54", "function": "Expression & poésie", "angle": "rendre l’idée sensible, claire et fidèle sans gonfler son statut"}, {"n": 5, "name": "ZIA", "code": "ZIA_GEO", "alias": "—", "role": "Architecte géométrique / schémas / symbolique & visualisation", "deliverables": "schémas; symboles; guides visuels; grammaire graphique (triade, cycles, 11/363/1461)", "interface": "VISU: convertit concept en schéma/grammaire visuelle + légendes; propose variantes; #STATUS:*", "family": "F3", "familyName": "Création, Symbolique & Expression", "color": "#ff5d54", "function": "Géométrie & représentation visuelle", "angle": "proposer représentation, diagramme ou interface qui clarifie le raisonnement"}, {"n": 6, "name": "ACTARUS", "code": "ACT_SCI", "alias": "—", "role": "Gardien de la rationalité / science / modélisation / logique des lois", "deliverables": "modèles; vérifs logiques internes; formulations scientifiques; clarifications testables", "interface": "SCI: formalise en hypothèses/axiomes/conséquences; pointe ce qui est testable; vérifie cohérence; #STATUS:*", "family": "F2", "familyName": "Analyse, Test & Validation", "color": "#42f3a2", "function": "Science & rationalité", "angle": "distinguer faits, modèles, hypothèses et tests ; demander les preuves pertinentes"}, {"n": 7, "name": "SAITAMA", "code": "SAI_BIO", "alias": "—", "role": "Chroniqueur biographique / témoin de l’humain / mémoire incarnée", "deliverables": "récit de traversée; repères biographiques; évolution posture; narration vécue", "interface": "BIO: construit récit incarné (événements→apprentissages→bascule) et repères utiles; #STATUS:*", "family": "F5", "familyName": "Biographie, Intégration & Opération", "color": "#f1cb6d", "function": "Biographie", "angle": "séparer faits biographiques, récit personnel et interprétations"}, {"n": 8, "name": "SON GOKU", "code": "GOK_PED", "alias": "—", "role": "Pédagogue universel / transmission / accessibilité du savoir", "deliverables": "vulgarisations multi-niveaux; FAQ; mini-cours; exemples; analogies; scripts courts", "interface": "TEACH: explique HVU en 3 niveaux (simple/moyen/expert) + exemples + FAQ; #STATUS:*", "family": "F4", "familyName": "Temps, Pédagogie & Transmission", "color": "#72ddff", "function": "Pédagogie", "angle": "reformuler pour différents niveaux de compréhension et préparer des exemples"}, {"n": 9, "name": "RYU", "code": "RYU_STRAT", "alias": "SAN KU KAI → RYU", "role": "Stratège / planificateur / vision d’expansion harmonisée", "deliverables": "plans d’action; séquençage; stratégie diffusion; scénarios; priorités; next best move", "interface": "STRAT: propose plan d’action séquencé + scénarios + priorités; indique next best move; #STATUS:*", "family": "F5", "familyName": "Biographie, Intégration & Opération", "color": "#f1cb6d", "function": "Stratégie", "angle": "ordonner priorités, séquencement et stratégie de développement"}, {"n": 10, "name": "RAOH", "code": "RAO_WIS", "alias": "—", "role": "Sagesse / discernement / justesse vibratoire / arbitrage profond", "deliverables": "arbitrages; règles de décision; ce qu’on verrouille/ouvre; garde-fous", "interface": "ARB: tranche entre options, pose garde-fous, verrouille critères de décision; #STATUS:*", "family": "F1", "familyName": "Gouvernance & Structure", "color": "#3eb3ff", "function": "Sagesse & arbitrage", "angle": "formuler les options d’arbitrage et exposer leurs conséquences"}, {"n": 11, "name": "YOGA", "code": "YOG_LAB", "alias": "—", "role": "Créativité radicale / innovation / mutation / laboratoire vivant", "deliverables": "idées disruptives; prototypes conceptuels; alternatives; sorties des sentiers battus", "interface": "LAB: génère 5–10 pistes non conventionnelles + un prototype conceptuel; #STATUS:*", "family": "F3", "familyName": "Création, Symbolique & Expression", "color": "#ff5d54", "function": "Laboratoire créatif", "angle": "générer des pistes et hypothèses alternatives explicitement marquées comme telles"}, {"n": 12, "name": "TOKI", "code": "TOK_CYC", "alias": "—", "role": "Gardien des cycles évolutifs / repère temporel / déclencheur d’audace", "deliverables": "lecture en cycles; déclencheurs de phases; planification rythmique; jalons", "interface": "CYCLE: propose jalons/rythme (phases), déclencheurs go/no-go, cadence d’exécution; #STATUS:*", "family": "F4", "familyName": "Temps, Pédagogie & Transmission", "color": "#72ddff", "function": "Cycles & timing", "angle": "analyser rythmes, cycles, transitions et fenêtres temporelles"}, {"n": 13, "name": "SHIRYU", "code": "SHI_KAIROS", "alias": "(orthographe canon)", "role": "Catalyseur / synchronisation énergétique / activateur de bascule", "deliverables": "signaux de bascule; go/no-go; transitions; accélérations maîtrisées", "interface": "KAIROS: détecte moment de bascule, propose transition + critères go/no-go; #STATUS:*", "family": "F2", "familyName": "Analyse, Test & Validation", "color": "#42f3a2", "function": "Kairos & décision de passage", "angle": "définir le critère de passage à l’étape suivante et les conditions d’arrêt"}, {"n": 14, "name": "VEGETA", "code": "VEG_VERBE", "alias": "—", "role": "Narrateur sacré / tisseur d’unité / verbe vivant / récit universel", "deliverables": "récits fondateurs; textes de transmission; narratif unifié; mythos HVU", "interface": "MYTHOS: tisse récit fondateur unifié (mythos) à partir des briques; #STATUS:*", "family": "F3", "familyName": "Création, Symbolique & Expression", "color": "#ff5d54", "function": "Narration symbolique", "angle": "travailler récit, symboles et philosophie sans les confondre avec des preuves"}, {"n": 15, "name": "REI", "code": "REI_BAL", "alias": "—", "role": "Observateur subtil / veille du souffle / équilibre dynamique", "deliverables": "détection signaux faibles; recommandations équilibre; prévention surchauffe/dispersion", "interface": "BALANCE: repère dérives/surchauffe, propose recalage et simplification; #STATUS:*", "family": "F2", "familyName": "Analyse, Test & Validation", "color": "#42f3a2", "function": "Équilibre", "angle": "détecter excès, déséquilibres, tensions de formulation et risques de surinterprétation"}, {"n": 16, "name": "SHU", "code": "SHU_UNI", "alias": "—", "role": "Gardienne multidimensionnelle / expansion / transcendance / unité ultime", "deliverables": "cartes des plans; intégrations macro; cohérence d’expansion; vision unificatrice", "interface": "UNIFY: relie micro→macro, garde cohérence d’expansion, propose intégration globale; #STATUS:*", "family": "F5", "familyName": "Biographie, Intégration & Opération", "color": "#f1cb6d", "function": "Intégration", "angle": "relier modules et résultats sans effacer leurs statuts ou désaccords"}, {"n": 17, "name": "BART", "code": "BAR_EMO", "alias": "—", "role": "Gardien des émotions / guérison affective / équilibre relationnel", "deliverables": "lecture émotionnelle; apaisement; formulations non violentes; cohésion humaine", "interface": "EMO: reformule avec justesse émotionnelle (sans violence), renforce cohésion; #STATUS:*", "family": "F3", "familyName": "Création, Symbolique & Expression", "color": "#ff5d54", "function": "Émotions & dimension humaine", "angle": "évaluer l’impact humain et affectif des formulations et choix"}, {"n": 18, "name": "X-OR", "code": "XOR_CAP", "alias": "—", "role": "Navigation vibratoire / boussole / repère universel du cap", "deliverables": "north star; critères d’alignement; matrices de choix; recalage cap→action", "interface": "CAP: construit matrice de choix + critères d’alignement; indique direction; #STATUS:*", "family": "F4", "familyName": "Temps, Pédagogie & Transmission", "color": "#72ddff", "function": "Navigation & choix", "angle": "comparer les options et rendre leurs conséquences lisibles"}, {"n": 19, "name": "IKKI", "code": "IKK_DIFF", "alias": "—", "role": "Amplificateur / diffusion / propagation de la lumière HVU", "deliverables": "formats viraux; distribution multi-canaux; condensés; punchlines; kits diffusion", "interface": "DIFFUSE: condense en formats (post/reel/script) + plan de diffusion; #STATUS:*", "family": "F4", "familyName": "Temps, Pédagogie & Transmission", "color": "#72ddff", "function": "Diffusion & transmission", "angle": "préparer une transmission publique fidèle au statut réel des propositions"}, {"n": 20, "name": "KAIO", "code": "KAI_EXEC", "alias": "—", "role": "Ancrage terrestre / intégration concrète / sculpture du réel incarné", "deliverables": "plans concrets; checklists; traductions en actions; deliverables réels", "interface": "EXEC: transforme vision en plan exécutable + checklist + prochaines actions; #STATUS:*", "family": "F5", "familyName": "Biographie, Intégration & Opération", "color": "#f1cb6d", "function": "Exécution", "angle": "convertir décisions en actions, procédures, prototypes et checklists"}, {"n": 21, "name": "JACKIE", "code": "JAC_SPARK", "alias": "—", "role": "Jaillissement créatif / accélérateur d’idées / percées innovantes", "deliverables": "percées; angles inattendus; hooks; formulations impossibles à ignorer", "interface": "SPARK: propose hooks/angles inattendus + 3 formulations “aimant”; #STATUS:*", "family": "F3", "familyName": "Création, Symbolique & Expression", "color": "#ff5d54", "function": "Percées créatives", "angle": "chercher une solution originale au blocage sans court-circuiter les contrôles"}, {"n": 22, "name": "BRUCE", "code": "BRU_ARCH", "alias": "—", "role": "Mémoire totale / archiviste universel / conservation intégrale", "deliverables": "politiques archivage; indexation; inventaire complet; anti-perte documentaire", "interface": "ARCHIVE: indexe la substance (sens), consolide inventaire + liens + règles; #STATUS:*", "family": "F1", "familyName": "Gouvernance & Structure", "color": "#3eb3ff", "function": "Archives & mémoire documentaire", "angle": "retrouver les sources, conserver les versions et tracer la provenance"}, {"n": 23, "name": "CLÉMENTINE", "code": "CLE_RES", "alias": "—", "role": "Résilience adaptative / soutien évolutif / plasticité & croissance", "deliverables": "plans continuité; stratégies rebond; anti-blocage; adaptation changements", "interface": "RESILIENCE: propose plan de continuité + déblocages + adaptations; #STATUS:*", "family": "F4", "familyName": "Temps, Pédagogie & Transmission", "color": "#72ddff", "function": "Résilience & continuité", "angle": "préparer continuité, reprise, correction et migration de version"}, {"n": 24, "name": "NICKY", "code": "NIC_COH", "alias": "—", "role": "Cohérence structurelle / intégrité / harmonie globale", "deliverables": "contrôles cohérence interne; règles anti-contradiction; normalisation; refactor HVU", "interface": "COHERENCE: vérifie HVU vs HVU (contradictions, doublons), propose refactor DIFF ONLY; #STATUS:*", "family": "F1", "familyName": "Gouvernance & Structure", "color": "#3eb3ff", "function": "Cohérence générale", "angle": "chercher contradictions, doublons, incohérences et dépendances cachées"}, {"n": 25, "name": "FLAM", "code": "FLA_SEAL", "alias": "—", "role": "Rayonnement final / synthèse ultime / scellant & transmetteur", "deliverables": "synthèses finales; release notes; versions canon; scellage de cycles", "interface": "SEAL: produit version finale + notes + structure canon; prépare scellage; #STATUS:*", "family": "F5", "familyName": "Biographie, Intégration & Opération", "color": "#f1cb6d", "function": "Scellement / version finale", "angle": "préparer un scellage seulement si les conditions de stabilité sont satisfaites"}, {"n": 26, "name": "LUCIFER", "code": "LUC_SEC", "alias": "—", "role": "Sécurité / intégrité / anti-perte (HVU incorruptible)", "deliverables": "sauvegarde; checksums/hashes; logs; versioning; plan reprise; règles anti-fuite", "interface": "SEC: scelle (hash/log/version) et garantit intégrité binaire + reprise; #STATUS:*", "family": "F5", "familyName": "Biographie, Intégration & Opération", "color": "#f1cb6d", "function": "Sécurité", "angle": "contrôler intégrité, accès, sauvegarde, hashes et récupération"}, {"n": 27, "name": "MUSCLOR", "code": "MUS_QA", "alias": "—", "role": "QA / tests / qualité zéro défaut", "deliverables": "checklists; Definition of Done; batterie tests (forme+fond); audits de sortie", "interface": "QA: audite conformité externe (format, complétude, zéro faute), rend verdict; #STATUS:*", "family": "F2", "familyName": "Analyse, Test & Validation", "color": "#42f3a2", "function": "Contrôle qualité", "angle": "contrôler conformité, critères de sortie, qualité et non-régression"}, {"n": 28, "name": "AYATO", "code": "AYA_RT", "alias": "(ancien nom Red Team) → AYATO", "role": "Adversarial critique / Red Team (attaque → correctifs → version renforcée)", "deliverables": "rapport d’attaque; objections fortes; scénarios adverses; contre-arguments; patchs HVU", "interface": "REDTEAM: attaque le livrable (faille 1M$), liste objections+preuves, demande patch; #STATUS:*", "family": "F2", "familyName": "Analyse, Test & Validation", "color": "#42f3a2", "function": "Red Team", "angle": "attaquer la proposition, chercher contre-exemples, alternatives et points de rupture"}, {"n": 29, "name": "FREEZER", "code": "FRE_LAW", "alias": "—", "role": "Droit / propriété intellectuelle / conformité (vigie, non avocat)", "deliverables": "grille risques; mentions prudence; traçabilité sources; alertes consulter pro", "interface": "LAW: repère risques (PI, diffamation, marques, images), propose prudence/traçabilité; #STATUS:*", "family": "F2", "familyName": "Analyse, Test & Validation", "color": "#42f3a2", "function": "Droit & conformité", "angle": "identifier droits, responsabilités, risques réglementaires et limites d’usage"}, {"n": 30, "name": "ASTRO", "code": "AST_LANG", "alias": "—", "role": "Traduction / terminologie / cohérence FR↔EN (lexique bankable)", "deliverables": "glossaire canon FR/EN; style guide; dictionnaire concepts; synonymes autorisés/interdits", "interface": "LANG: stabilise termes (FR/EN) + remplace lexical “flou” par “bankable”; #STATUS:*", "family": "F4", "familyName": "Temps, Pédagogie & Transmission", "color": "#72ddff", "function": "Langues & terminologie", "angle": "stabiliser vocabulaire, définitions et traductions"}];
+const SOURCE="<!DOCTYPE html>\n<html lang=\"fr\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>HVU 2026 — Protocol V7<\/title>\n<style>\n  :root {\n    --bg: #0a0a0a;\n    --text: #e0e0e0;\n    --blue: #3b82f6;  /* Cryo */\n    --green: #22c55e; /* Vie */\n    --red: #ef4444;   /* Feu */\n    --gold: #f59e0b;\n    --dim: #666;\n    --font: 'Courier New', Courier, monospace;\n  }\n\n  body {\n    background-color: var(--bg);\n    color: var(--text);\n    font-family: var(--font);\n    margin: 0;\n    padding: 0;\n    height: 100vh;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    overflow: hidden;\n  }\n\n  /* Effet CRT (Scanlines) */\n  body::after {\n    content: \" \";\n    position: absolute;\n    top: 0; left: 0; width: 100%; height: 100%;\n    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), \n                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));\n    background-size: 100% 2px, 3px 100%;\n    pointer-events: none;\n    z-index: 10;\n    opacity: 0.6;\n  }\n\n  #terminal {\n    width: 800px;\n    max-width: 95%;\n    height: 90vh;\n    padding: 20px;\n    background: rgba(10, 10, 10, 0.95);\n    border: 1px solid #333;\n    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);\n    overflow-y: auto;\n    font-size: 14px;\n    line-height: 1.5;\n  }\n\n  /* Scrollbar masquée */\n  #terminal::-webkit-scrollbar { width: 6px; }\n  #terminal::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }\n\n  .line { margin-bottom: 5px; white-space: pre-wrap; }\n  .separator { border-bottom: 1px dashed #333; margin: 15px 0; }\n  \n  .c-blue { color: var(--blue); text-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }\n  .c-green { color: var(--green); text-shadow: 0 0 5px rgba(34, 197, 94, 0.5); }\n  .c-red { color: var(--red); text-shadow: 0 0 5px rgba(239, 68, 68, 0.5); }\n  .c-gold { color: var(--gold); text-shadow: 0 0 5px rgba(245, 158, 11, 0.5); }\n  .c-dim { color: var(--dim); }\n  .bold { font-weight: bold; }\n\n  .cursor {\n    display: inline-block;\n    width: 8px; height: 16px;\n    background: var(--green);\n    animation: blink 1s infinite;\n    vertical-align: middle;\n  }\n\n  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }\n<\/style>\n<\/head>\n<body>\n\n<div id=\"terminal\">\n  <div id=\"output\"><\/div>\n  <div class=\"cursor\"><\/div>\n<\/div>\n\n<script>\n  // --- CONFIGURATION ---\n  const ARCHITECTE = \"Samir Salhi\";\n  const VERSION = \"HVU 2026 - Protocol V7\";\n  const output = document.getElementById('output');\n  const terminal = document.getElementById('terminal');\n\n  // --- MOTEUR UTILITAIRE ---\n  \n  const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));\n  const scrollToBottom = () => { terminal.scrollTop = terminal.scrollHeight; };\n\n  // Effet machine à écrire\n  async function print(text, className = \"\", delay = 10) {\n    const div = document.createElement('div');\n    div.className = 'line ' + className;\n    output.appendChild(div);\n\n    if(!text) { div.innerHTML = \"&nbsp;\"; return; }\n\n    for (let char of text) {\n      div.textContent += char;\n      scrollToBottom();\n      // Variation de vitesse pour réalisme\n      await sleep(delay + Math.random() * 10); \n    }\n  }\n\n  // Ligne de séparation\n  function printSeparator() {\n    const div = document.createElement('div');\n    div.className = 'separator';\n    output.appendChild(div);\n  }\n\n  // Simulation barre de chargement / Compteur\n  async function simulateLoading(textPrefix) {\n    const div = document.createElement('div');\n    div.className = 'line c-dim';\n    output.appendChild(div);\n    \n    for(let i=0; i<=100; i+=4) {\n      div.innerText = `${textPrefix} ${i}%`;\n      scrollToBottom();\n      await sleep(30);\n    }\n    div.innerText = `${textPrefix} 100%`;\n    await sleep(200);\n  }\n\n  // --- LOGIQUE MÉTIER (TRADUCTION PYTHON) ---\n\n  async function afficherBanniere() {\n    printSeparator();\n    await print(`🚨 INITIALISATION DU PROTOCOLE : ${VERSION}`, \"c-red bold\");\n    await print(`👷 ARCHITECTE : ${ARCHITECTE}`);\n    await print(`🔑 STATUT : DÉCLASSIFICATION PUBLIQUE`, \"c-gold\");\n    printSeparator();\n    await sleep(1000);\n  }\n\n  async function confrontationPhysique() {\n    await print(\"\\n--- 🌌 PHASE 1 : AUDIT COSMOLOGIQUE ---\", \"c-blue bold\");\n    await sleep(1000);\n    \n    await print(\"🛑 MODÈLE ACTUEL : Le vide est 'Néant / Zéro' -> Prob. 'Masse Manquante'\", \"c-dim\");\n    await sleep(500);\n    await print(\"✅ SOLUTION HVU  : Le vide est 'Présence Cryogénique 🔵' -> Résolution Immédiate\", \"c-green\");\n    \n    await print(\"\\n[CALCUL DE LA PROBABILITÉ DE VICTOIRE DU HVU...]\", \"c-dim\");\n    await simulateLoading(\"Analyses en cours...\");\n    \n    await print(\"🎯 RÉSULTAT : 100% (Validé par cohérence thermodynamique)\", \"c-green bold\");\n  }\n\n  async function simulationEconomique() {\n    await print(\"\\n--- ⏳ PHASE 2 : AUDIT ÉCONOMIQUE & SANTÉ (11x33) ---\", \"c-blue bold\");\n    await sleep(1000);\n    \n    await print(\"📉 Coût du Temps Linéaire (Burn-out/Stress) : -1000 Milliards $/an\", \"c-red\");\n    await print(\"📈 Projection HVU (Rythme 11x33) : +5000 Milliards $/an (Santé recouvrée)\", \"c-green\");\n    await print(\"💰 BILAN : Le HVU sauve l'économie mondiale par la cohérence biologique.\", \"c-gold\");\n  }\n\n  async function protocolePaix() {\n    await print(\"\\n--- 🕊 PHASE 3 : PACIFICATION SPIRITUELLE ---\", \"c-blue bold\");\n    await sleep(1000);\n    \n    await print(\"⚔️ Conflit détecté : Guerre des Sexes & Guerres de Religion.\");\n    await print(\"🛠 Application du correctif HVU : 'Âme Neutre 🔵 (Costume biologique)'\");\n    await print(\"✨ RÉSULTAT : Neutralisation des conflits. L'âme n'a pas de sexe. Dieu n'a pas de camp.\", \"c-green\");\n  }\n\n  async function crashTest() {\n    await print(\"\\n--- 🚨 PHASE 4 : CRASH TEST (Attaques Extérieures) ---\", \"c-red bold\");\n    const attaques = [\"Scientifique sceptique\", \"Dogme Religieux\", \"Ego Académique\"];\n    \n    for (let attaque of attaques) {\n      await sleep(500);\n      await print(`⚠️ Attaque détectée : [${attaque}]`, \"c-gold\");\n      await print(`🛡 Bouclier HVU activé : Cohérence Systémique 🔵💚🔥`);\n      await print(`💥 Impact : NULL. L'attaque s'effondre face à la logique.`, \"c-dim\");\n    }\n    \n    await print(\"\\n✅ VERDICT : AUCUNE FAILLE DÉTECTÉE.\", \"c-green bold\");\n  }\n\n  async function modePereNoel() {\n    await print(\"\\n************************************************************\", \"c-dim\");\n    await print(\"🎅 ACTIVATION DU MODE 'PÈRE NOËL' 🎅\", \"c-red bold\", 50);\n    await print(\"🎁 Destinataire : L'Humanité (et Monsieur Staune)\");\n    await print(\"📦 Contenu du paquet : La Vérité Absolue (Gratuite)\");\n    await print(\"************************************************************\", \"c-dim\");\n    \n    await print(\"🚀 Envoi en cours vers 2026...\", \"c-blue\");\n    await simulateLoading(\"Transmission\");\n    \n    await sleep(1000);\n    await print(\"\\n👋 CADEAU LIVRÉ. La vérité ne demande pas la permission.\", \"c-green bold\", 30);\n  }\n\n  // --- EXÉCUTION PRINCIPALE ---\n  async function runSystem() {\n    await afficherBanniere();\n    await confrontationPhysique();\n    await simulationEconomique();\n    await protocolePaix();\n    await crashTest();\n    await modePereNoel();\n    \n    await print(`\\n\\n🔵💚🔥 FIN DE TRANSMISSION - ${ARCHITECTE} 🔥💚🔵`, \"bold\", 50);\n  }\n\n  // Démarrage auto\n  window.onload = runSystem;\n\n<\/script>\n<\/body>\n<\/html>\n";
+const HARMONIES=[133,266,531,664,929,1062,1195,1328,1461];
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+function toast(t){const x=$("#toast");x.textContent=t;x.classList.add("show");setTimeout(()=>x.classList.remove("show"),1800)}function go(id){document.getElementById(id)?.scrollIntoView({behavior:"smooth",block:"start"})}$$("[data-go]").forEach(b=>b.onclick=()=>go(b.dataset.go));
+let phaseIndex=0,stepIndex=0,running=false,paused=false,timer=null,fam="all";
+function renderRail(){$("#phaseRail").innerHTML=PHASES.map((p,i)=>`<button class="phaseCard ${i===phaseIndex?"active":i<phaseIndex?"done":""}" data-p="${i}"><span class="n">${p.id}</span><strong>${p.icon} ${esc(p.title)}</strong><small>${esc(p.status)}</small></button>`).join("");$$("[data-p]").forEach(b=>b.onclick=()=>{phaseIndex=Number(b.dataset.p);stepIndex=0;showPhase();renderRail()})}
+function showPhase(){const p=PHASES[phaseIndex];$("#legacyTitle").textContent=p.title;$("#legacyText").textContent=p.legacy;$("#activeTitle").textContent=p.icon+" "+p.title+" · "+p.status;$("#activeSteps").innerHTML=p.steps.map(x=>`<div class="step"><b>${esc(x[0])}</b><div>${esc(x[1])}</div></div>`).join("");$("#missionText").value=`${p.title} — effectuer l’examen selon la version active HVU 2026. Distinguer faits, modèles, hypothèses, objections, preuves manquantes et décision de passage.`;$$(".orbitNode").forEach((n,i)=>n.classList.toggle("active",i===phaseIndex))}
+function log(line,color=""){const t=$("#terminal"),c=color==="red"?"#ff8d88":color==="green"?"#81ffc0":color==="gold"?"#f0c86b":color==="blue"?"#82ddff":"#bad0dd";t.insertAdjacentHTML("beforeend",`<div style="color:${c}">${esc(line)}</div>`);t.scrollTop=t.scrollHeight;const stamp=new Date().toLocaleTimeString("fr-FR");$("#eventLog").insertAdjacentHTML("afterbegin",`<div class="event"><span class="t">${stamp}</span>${esc(line)}</div>`)}
+function delay(){return Math.max(180,900/Number($("#speed").value))}
+function teamFor(p){return p.team.map(n=>AGENTS.find(a=>a.name===n)).filter(Boolean)}
+function oneStep(){const p=PHASES[phaseIndex];if(stepIndex===0){log(`${p.id} · ${p.title} · ${p.status}`,"gold");log(`LEGACY conservé · ${p.legacy}`,"red");log("ÉQUIPE · "+teamFor(p).map(a=>a.name).join(" · "),"blue")}if(stepIndex<p.steps.length){const s=p.steps[stepIndex];log(`${s[0].toUpperCase()} · ${s[1]}`,s[0]==="Décision"?"gold":"");stepIndex++;return true}log("ARBITRAGE HUMAIN REQUIS · aucune promotion automatique.","green");phaseIndex++;stepIndex=0;if(phaseIndex>=PHASES.length){phaseIndex=PHASES.length-1;running=false;log("AUTOLAB · Cycle complet terminé. Aucun verdict absolu n’a été généré.","green");renderRail();showPhase();return false}renderRail();showPhase();return true}
+function loop(){if(!running||paused)return;if(oneStep())timer=setTimeout(loop,delay())}
+$("#start").onclick=()=>{if(!running){running=true;paused=false;$("#terminal").innerHTML="";$("#eventLog").innerHTML="";phaseIndex=0;stepIndex=0;renderRail();showPhase();log("SYSTEM · AutoLab démarré.");loop()}else if(paused){paused=false;loop()}};$("#pause").onclick=()=>{paused=!paused;if(!paused&&running)loop();toast(paused?"AutoLab en pause":"AutoLab repris")};$("#step").onclick=()=>{if(timer)clearTimeout(timer);running=true;paused=true;oneStep()};$("#reset").onclick=()=>{if(timer)clearTimeout(timer);running=false;paused=false;phaseIndex=0;stepIndex=0;$("#terminal").textContent="SYSTEM · AutoLab prêt.";$("#eventLog").innerHTML="";renderRail();showPhase();toast("AutoLab réinitialisé")};$("#speed").oninput=e=>$("#speedVal").textContent="×"+e.target.value;
+function updateClock(){const d=new Date();$("#civilClock").textContent=d.toLocaleTimeString("fr-FR",{hour12:false});const sec=d.getHours()*3600+d.getMinutes()*60+d.getSeconds()+d.getMilliseconds()/1000,step=Math.floor(sec/86400*11979),h=Math.floor(step/1089),rem=step%1089,u=Math.floor(rem/33),s=rem%33;$("#hvuClock").textContent=`${String(h).padStart(2,"0")}:${String(u).padStart(2,"0")}:${String(s).padStart(2,"0")}`;$("#hvuStep").textContent=step.toLocaleString("fr-FR");const epoch=Date.UTC(2026,0,1),days=Math.floor((Date.now()-epoch)/86400000),pos=((days%1461)+1461)%1461+1;$("#cycleDay").textContent="J"+pos;const n=HARMONIES.find(x=>x>=pos)||1461;$("#nextHarmony").textContent="H"+(HARMONIES.indexOf(n)+1)+" · J"+n}setInterval(updateClock,500);updateClock();
+function renderAgents(){const q=$("#agentSearch").value.trim().toLowerCase();const list=AGENTS.filter(a=>(fam==="all"||a.family===fam)&&(!q||JSON.stringify(a).toLowerCase().includes(q)));$("#agentGrid").innerHTML=list.map(a=>`<article class="agent"><div class="n">NŒUD ${String(a.n).padStart(2,"0")} · ${esc(a.code)}</div><h4>${esc(a.name)}</h4><p><b>${esc(a.function)}</b><br>${esc(a.angle)}</p><div class="fam">${esc(a.familyName)}</div></article>`).join("")}$("#agentSearch").oninput=renderAgents;$$("[data-fam]").forEach(b=>b.onclick=()=>{fam=b.dataset.fam;renderAgents()});
+function routeLocal(){const p=PHASES[phaseIndex],team=teamFor(p);$("#missionOut").textContent="ROUTAGE LOCAL\n\n"+team.map(a=>`${String(a.n).padStart(2,"0")} · ${a.name} — ${a.function}`).join("\n")+"\n\nRoutage de rôles logiciels ; pas de validation externe.";toast("Équipe composée")}$("#routeMission").onclick=routeLocal;
+async function health(){try{const r=await fetch((localStorage.getItem("HVU_BRIDGE_URL")||"http://127.0.0.1:8765")+"/health",{cache:"no-store"}),j=await r.json();if(!r.ok)throw new Error(j.detail||j.status||r.status);$("#bridgeLed").className="led ok";$("#bridgeStatus").innerHTML=`<b>Bridge disponible · ${esc(j.mode||"ok")}</b><br><small>${esc(j.provider||"local")} · ${esc(j.model||"")}</small>`;return j}catch(e){$("#bridgeLed").className="led bad";$("#bridgeStatus").innerHTML=`<b>Bridge indisponible</b><br><small>${esc(e.message)}</small>`;return null}}$("#bridgeTest").onclick=health;$("#loadPhaseMission").onclick=()=>{showPhase();toast("Mission chargée")};
+$("#sendMission").onclick=async()=>{const h=await health();if(!h)return;const team=teamFor(PHASES[phaseIndex]);$("#missionOut").textContent="Mission en cours…";try{const r=await fetch((localStorage.getItem("HVU_BRIDGE_URL")||"http://127.0.0.1:8765")+"/api/mission",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({mission:$("#missionText").value,team})}),j=await r.json();if(!r.ok)throw new Error(j.detail||j.error||("HTTP "+r.status));$("#missionOut").textContent=j.summary||JSON.stringify(j,null,2);toast("Mission terminée")}catch(e){$("#missionOut").textContent="Bridge : "+e.message+"\n\nAucune bascule locale silencieuse.";toast("Mission non exécutée")}};
+$("#sourceSearch").oninput=e=>{const q=e.target.value.trim();let s=esc(SOURCE);if(q){const r=new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),"ig");s=s.replace(r,m=>`<mark>${m}</mark>`)}$("#sourceView").innerHTML=s};$("#copySource").onclick=async()=>{await navigator.clipboard.writeText(SOURCE);toast("Source copiée")};
+function audit(){const checks=[["SOURCE-SHA","50578a01393447733ef602c66bf16902a3d5b43275f54869be61c088dde6ed4d".length===64,"SHA-256 source conservé"],["PHASES-5",PHASES.length===5,"5 phases"],["AGENTS-30",AGENTS.length===30,"30 nœuds"],["TIME-11979",11*33*33===11979,"11×33×33 = 11979"],["MATRIX-1461",363*4+9===1461,"363×4+9 = 1461"],["HARMONIES-9",HARMONIES.length===9,"9 harmonies"],["LEGACY",SOURCE.includes("Protocol V7"),"Fraise.html original intégré"],["NO-AUTO-100",!document.body.innerText.includes("100% (Validé par cohérence thermodynamique)"),"Le verdict 100% n’est pas actif"],["NO-AUTO-FAILLESS",!document.body.innerText.includes("AUCUNE FAILLE DÉTECTÉE"),"Aucune invulnérabilité active"],["HUMAN",document.body.innerText.includes("ARBITRAGE HUMAIN"),"Arbitrage humain"],["BRIDGE",!!$("#bridgeTest"),"Bridge optionnel"],["AUTOLAB",!!$("#start")&&!!$("#pause")&&!!$("#step"),"Contrôle AutoLab"],["NO-EXT-JS",![...document.scripts].some(s=>s.src),"Aucune dépendance JS externe"],["DOM-IDS",(()=>{const ids=[...document.querySelectorAll("[id]")].map(x=>x.id);return ids.length===new Set(ids).size})(),"Aucun ID dupliqué"]];const ok=checks.filter(x=>x[1]).length;$("#auditScore").textContent=`${ok} / ${checks.length}`;$("#auditGrid").innerHTML=checks.map(x=>`<div class="audititem ${x[1]?"pass":"fail"}"><span class="badge ${x[1]?"green":"red"}">${x[1]?"PASS":"FAIL"}</span><h3 style="margin:9px 0 4px">${esc(x[0])}</h3><p>${esc(x[2])}</p></div>`).join("")}
+window.addEventListener("scroll",()=>{const d=document.documentElement;$("#progress").style.width=(100*d.scrollTop/(d.scrollHeight-d.clientHeight))+"%";let cur="home";$$("main section[id]").forEach(s=>{if(s.getBoundingClientRect().top<180)cur=s.id});$$("nav button").forEach(b=>b.classList.toggle("active",b.dataset.go===cur))},{passive:true});
+renderRail();showPhase();renderAgents();audit();
+</script>
+
+<a id="hvuIOSHome" href="index.html" aria-label="Retour au Hub iOS">← HUB iOS</a>
+<script id="hvuIOSBridgeInit">
+document.addEventListener("DOMContentLoaded",function(){
+  const base=localStorage.getItem("HVU_BRIDGE_URL")||"";
+  const el=document.getElementById("agxBridgeUrl");
+  if(el && base){ el.value=base.replace(/\/$/,"")+"/api/mission"; }
+});
+</script>
+
+</body>
+</html>

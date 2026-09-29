@@ -1,0 +1,48 @@
+{
+  "artifact": "HVU_OMEGA_R005_IPHONE_COMPLET_OPTIMISE_V09",
+  "version": "0.9.0",
+  "date": "2026-09-29",
+  "source_zip": "HVU_OMEGA_R005_IPHONE_PWA_READY_TO_INSTALL(2).zip",
+  "transformation": "Embedded base64 images from reseau_r005.html externalized and deduplicated.",
+  "reseau_original_sha256": "9d9d1f7a3e08322d646d3e256d60cf1c7f21dd3d3b3aa1712df07d962f890242",
+  "reseau_light_sha256": "f5e465d30ba5d7d1f650d5562e25daab47ccfac1f129021dc76bb24ef25c8b3e",
+  "embedded_references_externalized": 52,
+  "unique_assets_created": 42,
+  "unique_asset_bytes": 16188027,
+  "max_target_file_bytes": 26214400,
+  "deployment_targets": [
+    "Cloudflare Pages Direct Upload",
+    "GitHub Pages"
+  ],
+  "offline": "Cache dédié à la version et au site ; préchargement de toutes les ressources avec vérification SHA-256.",
+  "status": "PREPARED_FOR_STATIC_HTTPS_HOSTING",
+  "archive_optimization": [
+    {
+      "source": "hvu_imperium_v17_1_stabilit(3).html",
+      "original_bytes": 29364,
+      "sha256": "d257e21fc87399aa4a95d76bb2a08bbb3b5e0213fa22c30af4bfb60cfa82d546",
+      "previous_gzip_bytes": 9427,
+      "new_gzip_bytes": 9427,
+      "shared_image_references": 0,
+      "byte_identical_reconstruction": true
+    },
+    {
+      "source": "HVU_IXI_OMEGA_ULTIMA_COCKPIT_EXECUTIF_v35_PRO__FUSION_MAGISTRALE_V3_IMPERIALE(3).html",
+      "original_bytes": 12699378,
+      "sha256": "89e2b27a86c627bc830eb8c92c164a402762ae7cb9284d49430bff6ada9ac6ab",
+      "previous_gzip_bytes": 8110447,
+      "new_gzip_bytes": 3039811,
+      "shared_image_references": 12,
+      "byte_identical_reconstruction": true
+    },
+    {
+      "source": "HVU_IXI_OMEGA_ULTIMA_V36_2_RC2_7_MASTER_GOUVERNE_MAGISTRAL_NOYAU_VIVANT(1).html",
+      "original_bytes": 2548181,
+      "sha256": "5236225e2f2a67902182a723bd6b566785da06bc0985d0cd9ce40a8f1713f18a",
+      "previous_gzip_bytes": 529139,
+      "new_gzip_bytes": 529139,
+      "shared_image_references": 0,
+      "byte_identical_reconstruction": true
+    }
+  ]
+}

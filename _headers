@@ -1,0 +1,6 @@
+/sw.js
+  Cache-Control: no-cache
+/pwa.js
+  Cache-Control: no-cache
+/offline-assets.json
+  Cache-Control: no-cache
