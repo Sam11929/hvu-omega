@@ -2,7 +2,7 @@
   "id": "./",
   "name": "HVU Omega R005",
   "short_name": "HVU Omega",
-  "description": "HVU Omega R005 — Réseau Vivant, Protocoles, AutoLab, Cadran 11-33-33 et L’Enfant de l’Univers.",
+  "description": "HVU Omega R005 — PWA offline-first avec Bridge IA HTTPS sécurisé, Réseau Vivant, Protocoles, AutoLab, Cadran et L’Enfant de l’Univers.",
   "lang": "fr-FR",
   "start_url": "./index.html?source=pwa",
   "scope": "./",

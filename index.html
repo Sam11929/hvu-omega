@@ -60,7 +60,7 @@ footer{padding-top:30px;color:var(--muted);font-size:12px}
 <section>
 <div class="eyebrow">SAMIR SALHI · HVU Ω MOBILE · iPHONE / iPAD · R005</div>
 <h1>Un écosystème.<br><span>Cinq portes iOS.</span></h1>
-<p class="lead">Suite iOS hors ligne regroupant le Réseau Vivant, le Cockpit Protocoles, l’AutoLab, le Cadran Magistral 11‑33‑33 et L’Enfant de l’Univers. L’IA générative reste optionnelle via un Bridge HTTPS sécurisé.</p>
+<p class="lead">Suite iOS hors ligne regroupant le Réseau Vivant, le Cockpit Protocoles, l’AutoLab, le Cadran Magistral 11‑33‑33 et L’Enfant de l’Univers. L’IA générative peut être activée via un Bridge HTTPS sécurisé, avec jeton privé par appareil et arbitrage humain.</p>
 <div class="status"><span class="badge">OFFLINE-FIRST</span><span class="badge">11·33·33 = 11 979</span><span class="badge">MATRICE 1461</span><span class="badge">30 NŒUDS R005</span><span class="badge">SAFE AREA iPHONE</span><span class="badge">AUCUNE CLÉ API EMBARQUÉE</span></div>
 </section>
 
@@ -75,7 +75,9 @@ footer{padding-top:30px;color:var(--muted);font-size:12px}
 <section class="bridge">
 <div class="eyebrow">BRIDGE IA iOS · OPTIONNEL</div><h2>Connexion HTTPS distante</h2>
 <div class="note">Sur iPhone, <code>127.0.0.1</code> désigne l’iPhone lui-même. La clé OpenAI ne doit jamais être placée dans l’application. Le futur Bridge génératif restera côté serveur, derrière HTTPS.</div>
-<input id="bridgeUrl" inputmode="url" autocapitalize="none" autocomplete="off" placeholder="https://votre-bridge-hvu.exemple.com" style="margin-top:12px">
+<input id="bridgeUrl" inputmode="url" autocapitalize="none" autocomplete="off" placeholder="https://hvu-r005-bridge.votre-compte.workers.dev" style="margin-top:12px">
+<input id="bridgeToken" type="password" autocapitalize="none" autocomplete="off" spellcheck="false" placeholder="Jeton privé HVU — stocké uniquement sur cet appareil" style="margin-top:10px">
+<div class="note" style="margin-top:10px">Le jeton privé n’est jamais envoyé à GitHub et n’est jamais intégré au code public. Il reste dans le stockage local de cet appareil et sert uniquement à authentifier les missions vers le Bridge HTTPS.</div>
 <div class="row"><button id="save">Enregistrer</button><button id="test">Tester /health</button><button id="clear">Désactiver</button></div>
 <p id="bridgeState"><span class="led"></span>Bridge iOS non configuré.</p>
 </section>
@@ -99,11 +101,32 @@ footer{padding-top:30px;color:var(--muted);font-size:12px}
 <footer>HVU Ω Mobile · iOS · R005 · Candidat non ratifié · « Le Canon organise. Le Réel décide. »</footer>
 </main>
 <script>
-const input=document.getElementById("bridgeUrl"),state=document.getElementById("bridgeState");
+const input=document.getElementById("bridgeUrl"),tokenInput=document.getElementById("bridgeToken"),state=document.getElementById("bridgeState");
 input.value=localStorage.getItem("HVU_BRIDGE_URL")||"";
-document.getElementById("save").onclick=()=>{let v=input.value.trim().replace(/\/$/,"");if(v&&!/^https:\/\//i.test(v)){state.innerHTML='<span class="led bad"></span>iOS : configure une adresse HTTPS.';return}if(v)localStorage.setItem("HVU_BRIDGE_URL",v);else localStorage.removeItem("HVU_BRIDGE_URL");state.innerHTML='<span class="led ok"></span>Bridge enregistré.'};
-document.getElementById("clear").onclick=()=>{localStorage.removeItem("HVU_BRIDGE_URL");input.value="";state.innerHTML='<span class="led"></span>Bridge iOS désactivé.'};
-document.getElementById("test").onclick=async()=>{const b=(input.value.trim()||localStorage.getItem("HVU_BRIDGE_URL")||"").replace(/\/$/,"");if(!b){state.innerHTML='<span class="led bad"></span>Aucune URL configurée.';return}try{const r=await fetch(b+"/health",{cache:"no-store"});const j=await r.json();if(!r.ok)throw new Error("HTTP "+r.status);state.innerHTML='<span class="led ok"></span>Bridge disponible · '+(j.mode||j.status||"ok")}catch(e){state.innerHTML='<span class="led bad"></span>Bridge indisponible · '+e.message}};
+tokenInput.value=localStorage.getItem("HVU_BRIDGE_TOKEN")||"";
+document.getElementById("save").onclick=()=>{
+  const v=input.value.trim().replace(/\/$/,"");
+  const t=tokenInput.value.trim();
+  if(v&&!/^https:\/\//i.test(v)){state.innerHTML='<span class="led bad"></span>iOS : configure une adresse HTTPS.';return}
+  if(v)localStorage.setItem("HVU_BRIDGE_URL",v);else localStorage.removeItem("HVU_BRIDGE_URL");
+  if(t)localStorage.setItem("HVU_BRIDGE_TOKEN",t);else localStorage.removeItem("HVU_BRIDGE_TOKEN");
+  state.innerHTML='<span class="led ok"></span>Configuration enregistrée sur cet appareil · jeton '+(t?'chargé':'absent')+'.';
+};
+document.getElementById("clear").onclick=()=>{
+  localStorage.removeItem("HVU_BRIDGE_URL");localStorage.removeItem("HVU_BRIDGE_TOKEN");
+  input.value="";tokenInput.value="";state.innerHTML='<span class="led"></span>Bridge iOS désactivé et jeton local effacé.';
+};
+document.getElementById("test").onclick=async()=>{
+  const b=(input.value.trim()||localStorage.getItem("HVU_BRIDGE_URL")||"").replace(/\/$/,"");
+  if(!b){state.innerHTML='<span class="led bad"></span>Aucune URL configurée.';return}
+  try{
+    const r=await fetch(b+"/health",{cache:"no-store"});const j=await r.json();
+    if(!r.ok)throw new Error(j.detail||j.error||("HTTP "+r.status));
+    const serverReady=Boolean(j.openai_key_loaded)&&Boolean(j.access_token_loaded);
+    const localToken=Boolean((tokenInput.value||localStorage.getItem("HVU_BRIDGE_TOKEN")||"").trim());
+    state.innerHTML='<span class="led '+(serverReady&&localToken?'ok':'')+'"></span>Bridge '+(j.status||"ok")+' · '+(j.mode||"")+' · serveur '+(serverReady?'prêt':'à configurer')+' · jeton iPhone '+(localToken?'chargé':'absent');
+  }catch(e){state.innerHTML='<span class="led bad"></span>Bridge indisponible · '+e.message}
+};
 </script>
 <script id="hvuPWAInstallUI">
 (function(){

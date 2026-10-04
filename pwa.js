@@ -1,10 +1,21 @@
 (()=>{
-  const VERSION="0.9.0";
+  const VERSION="0.9.1";
   const BASE=new URL("./",document.baseURI).href;
   const CACHE="hvu-omega-ios:"+BASE+":"+VERSION;
   const MARKER="HVU_FULL_OFFLINE_CACHE:"+BASE;
   const MODULES=["./index.html","./reseau_r005.html","./protocoles.html","./autolab.html","./cadran.html","./enfant_univers.html"];
   window.HVU_PWA={version:VERSION,modules:MODULES};
+  const BRIDGE_URL_KEY="HVU_BRIDGE_URL";
+  const BRIDGE_TOKEN_KEY="HVU_BRIDGE_TOKEN";
+  window.hvuBridgeBase=()=>String(localStorage.getItem(BRIDGE_URL_KEY)||"").trim().replace(/\/$/,"");
+  window.hvuBridgeToken=()=>String(localStorage.getItem(BRIDGE_TOKEN_KEY)||"").trim();
+  window.hvuBridgeMissionUrl=()=>{const b=window.hvuBridgeBase();return b?b+"/api/mission":""};
+  window.hvuBridgeHealthUrl=()=>{const b=window.hvuBridgeBase();return b?b+"/health":""};
+  window.hvuBridgeHeaders=(extra={})=>{
+    const token=window.hvuBridgeToken();
+    return token?{...extra,"X-HVU-Token":token}:{...extra};
+  };
+  window.hvuBridgeConfig=()=>({base:window.hvuBridgeBase(),tokenLoaded:Boolean(window.hvuBridgeToken())});
   window.hvuIsStandalone=()=>window.matchMedia("(display-mode: standalone)").matches||window.navigator.standalone===true;
   window.hvuIsIOS=()=>/iphone|ipad|ipod/i.test(navigator.userAgent)||(/Macintosh/i.test(navigator.userAgent)&&navigator.maxTouchPoints>1);
   const register=async()=>{

@@ -1,0 +1,22 @@
+{
+  "artifact": "HVU_OMEGA_R005_IPHONE_COMPLET_OPTIMISE_V09_1_AI_BRIDGE_READY",
+  "version": "0.9.1",
+  "base_artifact": "HVU_OMEGA_R005_IPHONE_COMPLET_OPTIMISE_V09.zip",
+  "bridge_endpoint": "https://hvu-r005-bridge.samovni11.workers.dev",
+  "frontend_auth_header": "X-HVU-Token",
+  "frontend_secret_storage": "localStorage on device only",
+  "server_secrets_required": [
+    "OPENAI_API_KEY",
+    "HVU_BRIDGE_TOKEN"
+  ],
+  "server_optional_variables": [
+    "OPENAI_MODEL"
+  ],
+  "normal_team_max": 7,
+  "council_team_max": 30,
+  "silent_local_fallback": false,
+  "openai_key_embedded": false,
+  "hvu_token_embedded": false,
+  "human_arbitration_required": true,
+  "status": "AI_BRIDGE_READY_CANDIDATE_UNRATIFIED"
+}

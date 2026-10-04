@@ -1,5 +1,5 @@
 {
-  "version": "0.9.0",
+  "version": "0.9.1",
   "files": [
     {
       "path": "./404.html",
@@ -238,13 +238,13 @@
     },
     {
       "path": "./autolab.html",
-      "bytes": 66911,
-      "sha256": "fab7ca7119732d54d3fa1e496d37fd1bba05bffe8c26faf67cfd90cf93a09870"
+      "bytes": 67267,
+      "sha256": "3ba3a2be40e5e2e85a302497fbb2324b7b8135ba2cae2797bc468fd311eba4f3"
     },
     {
       "path": "./cadran.html",
-      "bytes": 78716,
-      "sha256": "c712f4b483dec85d419a5e1b69d9805b2a253fd98b018cbc71d049a048e0a583"
+      "bytes": 79063,
+      "sha256": "a8d29ec652976173370e62f1dae202cb41982c9791887847090c8a244b59317f"
     },
     {
       "path": "./enfant_univers.html",
@@ -283,28 +283,28 @@
     },
     {
       "path": "./index.html",
-      "bytes": 11066,
-      "sha256": "fb7bc845aa82e7698f9d1444e422377310898d51c0c28ab1e22c57930d2a9c5a"
+      "bytes": 12382,
+      "sha256": "4f835301b73cf07044fc4692cae346398266445223a57c84ee79b9c35f103c51"
     },
     {
       "path": "./manifest.webmanifest",
-      "bytes": 1521,
-      "sha256": "a71d024ad1f5078663078ca580eb0aefa37faa264883997ccbd09356ed15737e"
+      "bytes": 1563,
+      "sha256": "88d94a8789214e5b7923c5260fd61adecd26fd6bbef4ee9fa55a212aa8dd8f06"
     },
     {
       "path": "./protocoles.html",
-      "bytes": 78056,
-      "sha256": "2b0e56f37150717b9b016392ccea88ef9ac9ef615b63bc34f73ffdd24f0d9e3e"
+      "bytes": 78387,
+      "sha256": "c2e42124514af51913acbf886eecb407e1db81494099cf10977c1959ab1e7401"
     },
     {
       "path": "./pwa.js",
-      "bytes": 3378,
-      "sha256": "070f3e489e7fcfeb5008fc3a5207076124de9422c2f00787fd517263178a30ba"
+      "bytes": 4092,
+      "sha256": "e79aff7523a31e5f9a92beab0e329fcc8eee923aec9fc3de99241203b21527bc"
     },
     {
       "path": "./reseau_r005.html",
-      "bytes": 4376751,
-      "sha256": "f5e465d30ba5d7d1f650d5562e25daab47ccfac1f129021dc76bb24ef25c8b3e"
+      "bytes": 4377292,
+      "sha256": "5f023966dbec4b0b72462f677e54265780c75e48fc76052d4da6e394349264f9"
     }
   ]
 }

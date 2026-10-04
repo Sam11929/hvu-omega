@@ -1,0 +1,16 @@
+{
+  "source_sha256": "351c4aa84f2836f3ae74e45dcfe288d41b5ac89738ab9f96fec861c2dcd36c7e",
+  "output_version": "0.9.1",
+  "checks": {
+    "token_ui": true,
+    "token_header_helper": true,
+    "no_old_silent_fallback": true,
+    "explicit_no_silent_fallback": true,
+    "worker_30": true,
+    "version_pwa": true,
+    "version_sw": true
+  },
+  "file_count_before_report": 74,
+  "largest_file": "reseau_r005.html",
+  "largest_file_mib": 4.175
+}

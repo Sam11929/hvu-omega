@@ -1,4 +1,4 @@
-const VERSION="0.9.0";
+const VERSION="0.9.1";
 const BASE=self.registration.scope;
 const PREFIX="hvu-omega-ios:"+BASE+":";
 const CACHE=PREFIX+VERSION;
