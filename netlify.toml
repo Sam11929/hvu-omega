@@ -1,5 +1,9 @@
 [build]
 publish = "."
+
+[build.processing.html]
+pretty_urls = false
+
 [[headers]]
 for = "/sw.js"
 [headers.values]
